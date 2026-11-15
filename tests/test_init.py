@@ -14,7 +14,7 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 from custom_components.myindygo.api import MyIndygoAuthError, MyIndygoConnectionError
 from custom_components.myindygo.const import CONF_LIVE_INTERVAL, CONF_PLATFORM_INTERVAL, DOMAIN
 
-from .conftest import POOL_STATUS, STATUS
+from .conftest import DEVICE_PROGRAMS, POOL_STATUS, STATUS
 
 
 async def test_setup_registers_device_tree(
@@ -65,7 +65,7 @@ async def test_coordinators_data(
     assert set(data.cloud.data.modules) == {"gw", "pc", "ipx"}
     assert data.cloud.data.pools["pool1"] == POOL_STATUS
     assert data.cloud.data.programs == {"pc": {"programs": [{"index": 0}]}}
-    assert data.cloud.data.device_programs == {"pc": {"programs": [{"index": 0, "sched": []}]}}
+    assert data.cloud.data.device_programs == {"pc": DEVICE_PROGRAMS}
     assert data.live.data == {"pc": STATUS}
     assert data.cloud.update_interval == timedelta(minutes=15)
     assert data.live.update_interval == timedelta(minutes=2)

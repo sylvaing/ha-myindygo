@@ -19,7 +19,7 @@ from .api import MyIndygoApiClient
 from .const import CONF_CLIENT_ID, DOMAIN, MANUFACTURER, MODEL_NAMES
 from .coordinator import MyIndygoCloudCoordinator, MyIndygoLiveCoordinator
 
-PLATFORMS: list[Platform] = []
+PLATFORMS: list[Platform] = [Platform.BINARY_SENSOR, Platform.SENSOR]
 
 
 @dataclass

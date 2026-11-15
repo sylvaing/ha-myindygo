@@ -37,6 +37,11 @@ MODULES = [
         "serialNumber": "150302BBBBBB0001",
         "relay": "gw",
         "softwareVersion": "7.0.9",
+        "inputs": [
+            {"index": 1, "type": 5, "unit": 2, "expression": "x/100.0"},
+            {"index": 2, "type": 0, "unit": 0, "expression": "x"},
+        ],
+        "outputs": [{"index": 0}, {"index": 1}, {"index": 2}],
     },
 ]
 
@@ -47,9 +52,45 @@ POOL_STATUS = {
 }
 STATUS = {
     "dialogTimeStamp": "2026-11-14T14:14:47Z",
-    "pool": [{"index": 0, "value": 1, "time": "00:46", "tempRef": 4, "info": ["pgm"]}],
-    "sensorState": [{"index": 0, "value": 1929}],
+    "temperature": 29,
+    "pool": [
+        {"index": 0, "value": 1, "time": "00:46", "tempRef": 4, "info": ["pgm"]},
+        {"index": 1, "value": 1, "time": "01:30", "tempRef": 4, "origin": 2},
+        {"index": 2, "value": 0, "time": "00:00", "tempRef": 4},
+    ],
+    "sensorState": [{"index": 0, "value": 1929}, {"index": 1, "value": 2147483647}],
+    "inputsAlerts": [],
     "radio": [],
+}
+# Thermo-adaptive filtration schedule as compiled in a real controller (same mask every day).
+FILTRATION_SCHED = [
+    [4194336, 4194336, 28672, 61440, 63488, 129024, 261120, 1047552, 2096640, 8388352, 16777152, 16777212],
+    [4194336, 4194336, 28672, 61440, 63488, 129024, 261120, 1047552, 2096640, 8388352, 16777152, 16777212],
+    [4194336, 4194336, 28672, 61440, 63488, 129024, 261120, 1047552, 2096640, 8388352, 16777152, 16777212],
+    [4194336, 4194336, 28672, 61440, 63488, 129024, 261120, 1047552, 2096640, 8388352, 16777152, 16777212],
+    [4194336, 4194336, 28672, 61440, 63488, 129024, 261120, 1047552, 2096640, 8388352, 16777152, 16777212],
+    [4194336, 4194336, 28672, 61440, 63488, 129024, 261120, 1047552, 2096640, 8388352, 16777152, 16777212],
+    [4194336, 4194336, 28672, 61440, 63488, 129024, 261120, 1047552, 2096640, 8388352, 16777152, 16777212],
+]
+THRESHOLDS = [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 127]
+DEVICE_PROGRAMS = {
+    "programs": [
+        {
+            "index": 0,
+            "programCharacteristics": {"programType": 4, "mode": 2, "rule": 1, "ths": THRESHOLDS},
+            "sched": FILTRATION_SCHED,
+        },
+        {
+            "index": 1,
+            "programCharacteristics": {"programType": 8, "mode": 2, "rule": 0, "ths": THRESHOLDS},
+            "sched": [[0] * 12] * 7,
+        },
+        {
+            "index": 2,
+            "programCharacteristics": {"programType": 8, "mode": 0, "rule": 0, "ths": THRESHOLDS},
+            "sched": [[0] * 12] * 7,
+        },
+    ]
 }
 
 
@@ -89,4 +130,4 @@ def mock_client() -> Generator[AsyncMock]:
 async def _device(gateway_serial: str, endpoint: str, child_serial: str | None = None) -> dict:
     assert gateway_serial == "10000000AAAAAA0001"
     assert child_serial == "150302BBBBBB0001"
-    return {"status": STATUS, "programs": {"programs": [{"index": 0, "sched": []}]}}[endpoint]
+    return {"status": STATUS, "programs": DEVICE_PROGRAMS}[endpoint]
