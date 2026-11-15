@@ -1,8 +1,8 @@
 """The MyIndygo (Solem) integration (unofficial).
 
-Set-up logs in to the MyIndygo cloud and registers one Home Assistant device per module of the
-account (gateway, pool controller, IPX). Data coordinators and entities are added in the next
-steps of the roadmap (see the GitHub issues).
+Set-up logs in to the MyIndygo cloud, starts the two data coordinators and registers one Home
+Assistant device per module of the account (gateway, pool controller, IPX). Entities are added in
+the next steps of the roadmap (see the GitHub issues).
 """
 
 from __future__ import annotations
@@ -12,12 +12,12 @@ from dataclasses import dataclass
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_EMAIL, CONF_PASSWORD, Platform
 from homeassistant.core import HomeAssistant
-from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
 from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
-from .api import MyIndygoApiClient, MyIndygoAuthError, MyIndygoConnectionError
+from .api import MyIndygoApiClient
 from .const import CONF_CLIENT_ID, DOMAIN, MANUFACTURER, MODEL_NAMES
+from .coordinator import MyIndygoCloudCoordinator, MyIndygoLiveCoordinator
 
 PLATFORMS: list[Platform] = []
 
@@ -27,7 +27,8 @@ class MyIndygoData:
     """Runtime data of a config entry."""
 
     client: MyIndygoApiClient
-    modules: list[dict]
+    cloud: MyIndygoCloudCoordinator
+    live: MyIndygoLiveCoordinator
 
 
 type MyIndygoConfigEntry = ConfigEntry[MyIndygoData]
@@ -41,16 +42,15 @@ async def async_setup_entry(hass: HomeAssistant, entry: MyIndygoConfigEntry) -> 
         entry.data[CONF_PASSWORD],
         client_id=entry.options.get(CONF_CLIENT_ID) or None,
     )
-    try:
-        user = await client.async_get_user_with_modules()
-    except MyIndygoAuthError as err:
-        raise ConfigEntryAuthFailed(str(err)) from err
-    except MyIndygoConnectionError as err:
-        raise ConfigEntryNotReady(str(err)) from err
+    # The cloud data is required: auth errors start a reauth flow, connection errors a retry.
+    cloud = MyIndygoCloudCoordinator(hass, entry, client)
+    await cloud.async_config_entry_first_refresh()
+    # The live status is not: a gateway outage must not block the set-up.
+    live = MyIndygoLiveCoordinator(hass, entry, client, cloud)
+    await live.async_refresh()
 
-    modules: list[dict] = user.get("modules", [])
-    _async_register_devices(hass, entry, modules)
-    entry.runtime_data = MyIndygoData(client=client, modules=modules)
+    _async_register_devices(hass, entry, list(cloud.data.modules.values()))
+    entry.runtime_data = MyIndygoData(client=client, cloud=cloud, live=live)
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True

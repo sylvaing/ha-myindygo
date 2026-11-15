@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from datetime import timedelta
 from unittest.mock import AsyncMock
 
 import pytest
@@ -11,7 +12,9 @@ from homeassistant.helpers import device_registry as dr
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.myindygo.api import MyIndygoAuthError, MyIndygoConnectionError
-from custom_components.myindygo.const import DOMAIN
+from custom_components.myindygo.const import CONF_LIVE_INTERVAL, CONF_PLATFORM_INTERVAL, DOMAIN
+
+from .conftest import POOL_STATUS, STATUS
 
 
 async def test_setup_registers_device_tree(
@@ -50,3 +53,60 @@ async def test_setup_errors(
     assert mock_config_entry.state is state
     if isinstance(error, MyIndygoAuthError):
         assert any(mock_config_entry.async_get_active_flows(hass, {"reauth"}))
+
+
+async def test_coordinators_data(
+    hass: HomeAssistant, mock_client: AsyncMock, mock_config_entry: MockConfigEntry
+) -> None:
+    mock_config_entry.add_to_hass(hass)
+    assert await hass.config_entries.async_setup(mock_config_entry.entry_id)
+    data = mock_config_entry.runtime_data
+
+    assert set(data.cloud.data.modules) == {"gw", "pc", "ipx"}
+    assert data.cloud.data.pools["pool1"] == POOL_STATUS
+    assert data.cloud.data.programs == {"pc": {"programs": [{"index": 0}]}}
+    assert data.cloud.data.device_programs == {"pc": {"programs": [{"index": 0, "sched": []}]}}
+    assert data.live.data == {"pc": STATUS}
+    assert data.cloud.update_interval == timedelta(minutes=15)
+    assert data.live.update_interval == timedelta(minutes=2)
+
+
+async def test_intervals_from_options(
+    hass: HomeAssistant, mock_client: AsyncMock, mock_config_entry: MockConfigEntry
+) -> None:
+    entry = MockConfigEntry(
+        domain=DOMAIN,
+        unique_id="user@example.com",
+        data=mock_config_entry.data,
+        options={CONF_LIVE_INTERVAL: 5, CONF_PLATFORM_INTERVAL: 30},
+    )
+    entry.add_to_hass(hass)
+    assert await hass.config_entries.async_setup(entry.entry_id)
+    assert entry.runtime_data.live.update_interval == timedelta(minutes=5)
+    assert entry.runtime_data.cloud.update_interval == timedelta(minutes=30)
+
+
+async def test_gateway_offline_does_not_block_setup(
+    hass: HomeAssistant, mock_client: AsyncMock, mock_config_entry: MockConfigEntry
+) -> None:
+    mock_client.async_get_device.side_effect = MyIndygoConnectionError("gateway offline")
+    mock_config_entry.add_to_hass(hass)
+    assert await hass.config_entries.async_setup(mock_config_entry.entry_id)
+    assert mock_config_entry.state is ConfigEntryState.LOADED
+
+    data = mock_config_entry.runtime_data
+    assert data.cloud.last_update_success
+    assert data.cloud.data.device_programs == {}
+    assert not data.live.last_update_success
+
+
+async def test_live_auth_error_starts_reauth(
+    hass: HomeAssistant, mock_client: AsyncMock, mock_config_entry: MockConfigEntry
+) -> None:
+    mock_config_entry.add_to_hass(hass)
+    assert await hass.config_entries.async_setup(mock_config_entry.entry_id)
+
+    mock_client.async_get_device.side_effect = MyIndygoAuthError("revoked")
+    await mock_config_entry.runtime_data.live.async_refresh()
+    await hass.async_block_till_done()
+    assert any(mock_config_entry.async_get_active_flows(hass, {"reauth"}))

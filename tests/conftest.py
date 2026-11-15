@@ -41,6 +41,18 @@ MODULES = [
 ]
 
 
+POOL_STATUS = {
+    "id": "pool1",
+    "status": {"lastTemperatureMeasure": {"value": 19.29, "date": 1794665160}},
+}
+STATUS = {
+    "dialogTimeStamp": "2026-11-14T14:14:47Z",
+    "pool": [{"index": 0, "value": 1, "time": "00:46", "tempRef": 4, "info": ["pgm"]}],
+    "sensorState": [{"index": 0, "value": 1929}],
+    "radio": [],
+}
+
+
 @pytest.fixture(autouse=True)
 def auto_enable_custom_integrations(enable_custom_integrations):
     """Allow Home Assistant to load the custom integration in every test."""
@@ -67,4 +79,14 @@ def mock_client() -> Generator[AsyncMock]:
     ):
         client = flow_cls.return_value
         client.async_get_user_with_modules.return_value = {"id": "u", "modules": MODULES}
+        client.async_get_pools.return_value = [{"id": "pool1"}]
+        client.async_get_pool_status.return_value = POOL_STATUS
+        client.async_get_programs.return_value = {"programs": [{"index": 0}]}
+        client.async_get_device.side_effect = _device
         yield client
+
+
+async def _device(gateway_serial: str, endpoint: str, child_serial: str | None = None) -> dict:
+    assert gateway_serial == "10000000AAAAAA0001"
+    assert child_serial == "150302BBBBBB0001"
+    return {"status": STATUS, "programs": {"programs": [{"index": 0, "sched": []}]}}[endpoint]
