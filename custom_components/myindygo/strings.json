@@ -3,15 +3,54 @@
     "step": {
       "user": {
         "title": "MyIndygo account",
-        "description": "Sign in with the e-mail and password of your MyIndygo app account.",
+        "description": "Sign in with the e-mail and password of your MyIndygo app account. This integration is unofficial and not affiliated with Solem.",
         "data": {
           "email": "[%key:common::config_flow::data::email%]",
           "password": "[%key:common::config_flow::data::password%]"
         }
+      },
+      "reauth_confirm": {
+        "title": "[%key:common::config_flow::title::reauth%]",
+        "description": "The MyIndygo cloud rejected the password of {email}. Enter the current password.",
+        "data": {
+          "password": "[%key:common::config_flow::data::password%]"
+        }
       }
     },
+    "error": {
+      "invalid_auth": "[%key:common::config_flow::error::invalid_auth%]",
+      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+      "unknown": "[%key:common::config_flow::error::unknown%]",
+      "no_devices": "No MyIndygo device was found on this account."
+    },
     "abort": {
-      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]"
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "MyIndygo options",
+        "description": "Keep the polling intervals conservative: the MyIndygo cloud is not designed for frequent polling.",
+        "data": {
+          "live_interval": "Controller status interval",
+          "platform_interval": "Cloud data interval",
+          "client_id": "App client identifier (advanced)"
+        },
+        "data_description": {
+          "live_interval": "Real-time state of the pool controller, read through the gateway.",
+          "platform_interval": "Electrolyser, pH and programs. The electrolyser only reports every 10 to 15 minutes.",
+          "client_id": "Leave empty to use the identifier of the MyIndygo app. Only change it if Solem changes the app identifier (format client_id:client_secret)."
+        }
+      }
+    },
+    "error": {
+      "invalid_client_id": "Expected format: client_id:client_secret",
+      "invalid_auth": "[%key:common::config_flow::error::invalid_auth%]",
+      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
+      "unknown": "[%key:common::config_flow::error::unknown%]",
+      "no_devices": "No MyIndygo device was found on this account."
     }
   }
 }
