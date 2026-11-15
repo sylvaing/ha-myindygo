@@ -158,6 +158,48 @@
       },
       "last_communication": {
         "name": "Dernière communication"
+      },
+      "ph": {
+        "name": "pH"
+      },
+      "redox": {
+        "name": "Redox"
+      },
+      "ph_setpoint": {
+        "name": "Consigne pH"
+      },
+      "ph_regulation_mode": {
+        "name": "Régulation pH",
+        "state": {
+          "off": "Arrêt",
+          "on": "Marche"
+        }
+      },
+      "salt": {
+        "name": "Sel"
+      },
+      "production_setpoint": {
+        "name": "Consigne de production"
+      },
+      "electrolysis_mode": {
+        "name": "Mode d'électrolyse",
+        "state": {
+          "off": "Arrêt",
+          "percentage": "Pourcentage",
+          "auto": "Auto (sonde)"
+        }
+      },
+      "boost_remaining": {
+        "name": "Temps de boost restant"
+      },
+      "electrolysis_hours": {
+        "name": "Heures d'électrolyse"
+      },
+      "cell_voltage": {
+        "name": "Tension de la cellule"
+      },
+      "last_report": {
+        "name": "Dernière remontée"
       }
     },
     "binary_sensor": {
@@ -172,6 +214,33 @@
       },
       "input_alert": {
         "name": "Alerte d'entrée"
+      },
+      "production": {
+        "name": "Production"
+      },
+      "ph_injection": {
+        "name": "Injection pH"
+      },
+      "wintering": {
+        "name": "Hivernage"
+      },
+      "alarm": {
+        "name": "Alarme"
+      },
+      "boost": {
+        "name": "Boost"
+      },
+      "flow_input": {
+        "name": "Entrée débit"
+      },
+      "cover_input": {
+        "name": "Entrée volet"
+      },
+      "ph_can_input": {
+        "name": "Entrée bidon pH"
+      },
+      "command_input": {
+        "name": "Entrée commande externe"
       }
     }
   }

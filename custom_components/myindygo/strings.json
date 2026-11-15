@@ -158,6 +158,48 @@
       },
       "last_communication": {
         "name": "Last communication"
+      },
+      "ph": {
+        "name": "pH"
+      },
+      "redox": {
+        "name": "Redox"
+      },
+      "ph_setpoint": {
+        "name": "pH setpoint"
+      },
+      "ph_regulation_mode": {
+        "name": "pH regulation",
+        "state": {
+          "off": "Off",
+          "on": "On"
+        }
+      },
+      "salt": {
+        "name": "Salt"
+      },
+      "production_setpoint": {
+        "name": "Production setpoint"
+      },
+      "electrolysis_mode": {
+        "name": "Electrolysis mode",
+        "state": {
+          "off": "Off",
+          "percentage": "Percentage",
+          "auto": "Auto (sensor)"
+        }
+      },
+      "boost_remaining": {
+        "name": "Boost remaining time"
+      },
+      "electrolysis_hours": {
+        "name": "Electrolysis hours"
+      },
+      "cell_voltage": {
+        "name": "Cell voltage"
+      },
+      "last_report": {
+        "name": "Last report"
       }
     },
     "binary_sensor": {
@@ -172,6 +214,33 @@
       },
       "input_alert": {
         "name": "Input alert"
+      },
+      "production": {
+        "name": "Production"
+      },
+      "ph_injection": {
+        "name": "pH injection"
+      },
+      "wintering": {
+        "name": "Wintering"
+      },
+      "alarm": {
+        "name": "Alarm"
+      },
+      "boost": {
+        "name": "Boost"
+      },
+      "flow_input": {
+        "name": "Flow input"
+      },
+      "cover_input": {
+        "name": "Cover input"
+      },
+      "ph_can_input": {
+        "name": "pH can input"
+      },
+      "command_input": {
+        "name": "External command input"
       }
     }
   }
