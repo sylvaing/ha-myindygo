@@ -45,6 +45,7 @@ from .electrolyser import (
     last_value,
     output_value,
 )
+from .gateway import GatewayEntity, GatewayFn, gateways, last_restart
 from .pool import (
     DEVICE_PROGRAM_TYPES,
     MODES,
@@ -74,6 +75,22 @@ async def async_setup_entry(
         entities.extend(_controller_sensors(data, module))
     for module in electrolysers(data):
         entities.extend(_electrolyser_sensors(data, module))
+    for module in gateways(data):
+        entities.append(
+            GatewaySensor(
+                data,
+                module,
+                "last_restart",
+                lambda _m, info: last_restart(info),
+                device_class=SensorDeviceClass.TIMESTAMP,
+            )
+        )
+        # Meaning of this code is not documented: kept for diagnosis, disabled by default.
+        entities.append(
+            GatewaySensor(
+                data, module, "reset_code", lambda _m, info: (info or {}).get("reset"), enabled=False
+            )
+        )
     async_add_entities(entities)
 
 
@@ -391,6 +408,30 @@ class ElectrolyserSensor(ElectrolyserEntity, SensorEntity):
         self._attr_state_class = state_class
         self._attr_options = options
         self._attr_entity_category = category
+
+    @property
+    def native_value(self) -> Any:
+        return self._value()
+
+
+class GatewaySensor(GatewayEntity, SensorEntity):
+    """A diagnostic sensor of a gateway."""
+
+    _attr_entity_category = EntityCategory.DIAGNOSTIC
+
+    def __init__(
+        self,
+        data: MyIndygoData,
+        module: dict[str, Any],
+        key: str,
+        value_fn: GatewayFn,
+        *,
+        device_class: SensorDeviceClass | None = None,
+        enabled: bool = True,
+    ) -> None:
+        super().__init__(data, module, key, value_fn, needs_info=True)
+        self._attr_device_class = device_class
+        self._attr_entity_registry_enabled_default = enabled
 
     @property
     def native_value(self) -> Any:

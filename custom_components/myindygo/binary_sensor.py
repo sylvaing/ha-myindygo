@@ -22,6 +22,7 @@ from .electrolyser import (
     has_output,
     output_value,
 )
+from .gateway import GatewayEntity, GatewayFn, gateways
 from .pool import output_status
 
 PARALLEL_UPDATES = 0
@@ -71,7 +72,52 @@ async def async_setup_entry(
         )
     for module in electrolysers(data):
         entities.extend(_electrolyser_binary_sensors(data, module))
+    for module in gateways(data):
+        entities.append(
+            GatewayBinarySensor(
+                data,
+                module,
+                "cloud_connection",
+                lambda m, _info: m.get("isOnline"),
+                device_class=BinarySensorDeviceClass.CONNECTIVITY,
+            )
+        )
+        entities.append(
+            GatewayBinarySensor(
+                data,
+                module,
+                "wifi_link",
+                lambda _m, info: (info or {}).get("wifiLink"),
+                device_class=BinarySensorDeviceClass.CONNECTIVITY,
+                category=EntityCategory.DIAGNOSTIC,
+                needs_info=True,
+            )
+        )
     async_add_entities(entities)
+
+
+class GatewayBinarySensor(GatewayEntity, BinarySensorEntity):
+    """A binary sensor of a gateway."""
+
+    def __init__(
+        self,
+        data: MyIndygoData,
+        module: dict[str, Any],
+        key: str,
+        value_fn: GatewayFn,
+        *,
+        device_class: BinarySensorDeviceClass | None = None,
+        category: EntityCategory | None = None,
+        needs_info: bool = False,
+    ) -> None:
+        super().__init__(data, module, key, value_fn, needs_info=needs_info)
+        self._attr_device_class = device_class
+        self._attr_entity_category = category
+
+    @property
+    def is_on(self) -> bool | None:
+        value = self._value()
+        return value if isinstance(value, bool) else None
 
 
 def _electrolyser_binary_sensors(data: MyIndygoData, module: dict[str, Any]) -> list[BinarySensorEntity]:
