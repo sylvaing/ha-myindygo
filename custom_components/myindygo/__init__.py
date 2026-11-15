@@ -1,23 +1,90 @@
-"""The MyIndygo (Solem) integration.
+"""The MyIndygo (Solem) integration (unofficial).
 
-Unofficial integration for Solem MyIndygo pool equipment. This is a scaffold:
-the API client, coordinators and entities are tracked in the GitHub issues.
+Set-up logs in to the MyIndygo cloud and registers one Home Assistant device per module of the
+account (gateway, pool controller, IPX). Data coordinators and entities are added in the next
+steps of the roadmap (see the GitHub issues).
 """
 
 from __future__ import annotations
 
+from dataclasses import dataclass
+
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import CONF_EMAIL, CONF_PASSWORD, Platform
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady
+from homeassistant.helpers import device_registry as dr
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
-PLATFORMS: list[str] = []
+from .api import MyIndygoApiClient, MyIndygoAuthError, MyIndygoConnectionError
+from .const import CONF_CLIENT_ID, DOMAIN, MANUFACTURER, MODEL_NAMES
+
+PLATFORMS: list[Platform] = []
 
 
-async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+@dataclass
+class MyIndygoData:
+    """Runtime data of a config entry."""
+
+    client: MyIndygoApiClient
+    modules: list[dict]
+
+
+type MyIndygoConfigEntry = ConfigEntry[MyIndygoData]
+
+
+async def async_setup_entry(hass: HomeAssistant, entry: MyIndygoConfigEntry) -> bool:
     """Set up MyIndygo from a config entry."""
+    client = MyIndygoApiClient(
+        async_get_clientsession(hass),
+        entry.data[CONF_EMAIL],
+        entry.data[CONF_PASSWORD],
+        client_id=entry.options.get(CONF_CLIENT_ID) or None,
+    )
+    try:
+        user = await client.async_get_user_with_modules()
+    except MyIndygoAuthError as err:
+        raise ConfigEntryAuthFailed(str(err)) from err
+    except MyIndygoConnectionError as err:
+        raise ConfigEntryNotReady(str(err)) from err
+
+    modules: list[dict] = user.get("modules", [])
+    _async_register_devices(hass, entry, modules)
+    entry.runtime_data = MyIndygoData(client=client, modules=modules)
+
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
 
 
-async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+async def async_unload_entry(hass: HomeAssistant, entry: MyIndygoConfigEntry) -> bool:
     """Unload a config entry."""
     return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
+
+
+def _async_register_devices(hass: HomeAssistant, entry: ConfigEntry, modules: list[dict]) -> None:
+    """Create one device per module, linked to its parent (gateway -> controller -> IPX)."""
+    registry = dr.async_get(hass)
+    by_id = {module["id"]: module for module in modules}
+
+    def depth(module: dict) -> int:
+        parent = by_id.get(module.get("relay") or module.get("ipxRelay"))
+        return 1 + depth(parent) if parent else 0
+
+    # Parents first, so that via_device_id always points to an existing device. These are
+    # separate physical devices (not child devices of one another), linked by radio.
+    device_ids: dict[str, str] = {}
+    for module in sorted(modules, key=depth):
+        parent = by_id.get(module.get("relay") or module.get("ipxRelay"))
+        model_code = str(module.get("manufacturerType", "")).upper()
+        device = registry.async_get_or_create(
+            config_entry_id=entry.entry_id,
+            identifiers={(DOMAIN, module["serialNumber"])},
+            manufacturer=MANUFACTURER,
+            model=MODEL_NAMES.get(model_code, module.get("type")),
+            name=module.get("name") or module["serialNumber"],
+            serial_number=module["serialNumber"],
+            sw_version=module.get("softwareVersion"),
+            hw_version=module.get("hardwareVersion"),
+            via_device_id=device_ids.get(parent["id"]) if parent else None,
+        )
+        device_ids[module["id"]] = device.id

@@ -3,15 +3,54 @@
     "step": {
       "user": {
         "title": "Compte MyIndygo",
-        "description": "Connectez-vous avec l'e-mail et le mot de passe de votre compte de l'application MyIndygo.",
+        "description": "Connectez-vous avec l'e-mail et le mot de passe de votre compte de l'application MyIndygo. Cette intégration n'est pas officielle et n'est pas affiliée à Solem.",
         "data": {
           "email": "E-mail",
           "password": "Mot de passe"
         }
+      },
+      "reauth_confirm": {
+        "title": "Réauthentifier l'intégration",
+        "description": "Le cloud MyIndygo a refusé le mot de passe de {email}. Saisissez le mot de passe actuel.",
+        "data": {
+          "password": "Mot de passe"
+        }
       }
     },
+    "error": {
+      "invalid_auth": "Authentification invalide",
+      "cannot_connect": "Échec de connexion",
+      "unknown": "Erreur inattendue",
+      "no_devices": "Aucun équipement MyIndygo n'a été trouvé sur ce compte."
+    },
     "abort": {
-      "already_configured": "Ce compte est déjà configuré"
+      "already_configured": "Ce compte est déjà configuré",
+      "reauth_successful": "La réauthentification a réussi"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options MyIndygo",
+        "description": "Gardez des intervalles prudents : le cloud MyIndygo n'est pas prévu pour des interrogations fréquentes.",
+        "data": {
+          "live_interval": "Intervalle de l'état du coffret",
+          "platform_interval": "Intervalle des données cloud",
+          "client_id": "Identifiant client de l'application (avancé)"
+        },
+        "data_description": {
+          "live_interval": "État temps réel du coffret, lu à travers la passerelle.",
+          "platform_interval": "Électrolyseur, pH et programmes. L'électrolyseur ne remonte ses données que toutes les 10 à 15 minutes.",
+          "client_id": "Laissez vide pour utiliser l'identifiant de l'application MyIndygo. À modifier seulement si Solem change l'identifiant de l'application (format client_id:client_secret)."
+        }
+      }
+    },
+    "error": {
+      "invalid_client_id": "Format attendu : client_id:client_secret",
+      "invalid_auth": "Authentification invalide",
+      "cannot_connect": "Échec de connexion",
+      "unknown": "Erreur inattendue",
+      "no_devices": "Aucun équipement MyIndygo n'a été trouvé sur ce compte."
     }
   }
 }
