@@ -52,5 +52,127 @@
       "unknown": "Unexpected error",
       "no_devices": "No MyIndygo device was found on this account."
     }
+  },
+  "entity": {
+    "sensor": {
+      "water_temperature": {
+        "name": "Water temperature"
+      },
+      "input_temperature": {
+        "name": "Temperature {number}"
+      },
+      "filtration_state": {
+        "name": "Filtration state",
+        "state": {
+          "off": "Off",
+          "program": "Program",
+          "manual": "Manual run",
+          "boost": "Boost",
+          "frost_free": "Frost protection",
+          "paused": "Paused"
+        }
+      },
+      "output_state": {
+        "name": "Output {number} state",
+        "state": {
+          "off": "Off",
+          "program": "Program",
+          "manual": "Manual run",
+          "boost": "Boost",
+          "frost_free": "Frost protection",
+          "paused": "Paused"
+        }
+      },
+      "filtration_remaining": {
+        "name": "Filtration remaining time"
+      },
+      "output_remaining": {
+        "name": "Output {number} remaining time"
+      },
+      "filtration_mode": {
+        "name": "Filtration mode",
+        "state": {
+          "off": "Off",
+          "on": "On",
+          "auto": "Auto"
+        }
+      },
+      "output_mode": {
+        "name": "Output {number} mode",
+        "state": {
+          "off": "Off",
+          "on": "On",
+          "auto": "Auto"
+        }
+      },
+      "filtration_rule": {
+        "name": "Filtration rule",
+        "state": {
+          "time": "Time slots",
+          "temperature": "Temperature",
+          "variable_speed": "Variable speed"
+        }
+      },
+      "output_rule": {
+        "name": "Output {number} rule",
+        "state": {
+          "time": "Time slots",
+          "temperature": "Temperature",
+          "variable_speed": "Variable speed"
+        }
+      },
+      "filtration_type": {
+        "name": "Filtration output type",
+        "state": {
+          "auxiliary": "Auxiliary",
+          "filtration": "Filtration",
+          "treatment": "Treatment",
+          "robot": "Robot",
+          "heat_pump": "Heat pump",
+          "lighting": "Lighting",
+          "backwash": "Backwash",
+          "pulse": "Pulse"
+        }
+      },
+      "output_type": {
+        "name": "Output {number} type",
+        "state": {
+          "auxiliary": "Auxiliary",
+          "filtration": "Filtration",
+          "treatment": "Treatment",
+          "robot": "Robot",
+          "heat_pump": "Heat pump",
+          "lighting": "Lighting",
+          "backwash": "Backwash",
+          "pulse": "Pulse"
+        }
+      },
+      "temperature_band": {
+        "name": "Temperature band"
+      },
+      "filtration_planned_today": {
+        "name": "Filtration planned today"
+      },
+      "controller_temperature": {
+        "name": "Controller temperature"
+      },
+      "last_communication": {
+        "name": "Last communication"
+      }
+    },
+    "binary_sensor": {
+      "filtration_running": {
+        "name": "Filtration"
+      },
+      "output_running": {
+        "name": "Output {number}"
+      },
+      "radio_pending": {
+        "name": "Radio command pending"
+      },
+      "input_alert": {
+        "name": "Input alert"
+      }
+    }
   }
 }

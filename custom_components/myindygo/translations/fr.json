@@ -52,5 +52,127 @@
       "unknown": "Erreur inattendue",
       "no_devices": "Aucun équipement MyIndygo n'a été trouvé sur ce compte."
     }
+  },
+  "entity": {
+    "sensor": {
+      "water_temperature": {
+        "name": "Température de l'eau"
+      },
+      "input_temperature": {
+        "name": "Température {number}"
+      },
+      "filtration_state": {
+        "name": "État de la filtration",
+        "state": {
+          "off": "Arrêt",
+          "program": "Programme",
+          "manual": "Marche forcée",
+          "boost": "Boost",
+          "frost_free": "Hors-gel",
+          "paused": "En pause"
+        }
+      },
+      "output_state": {
+        "name": "État de la sortie {number}",
+        "state": {
+          "off": "Arrêt",
+          "program": "Programme",
+          "manual": "Marche forcée",
+          "boost": "Boost",
+          "frost_free": "Hors-gel",
+          "paused": "En pause"
+        }
+      },
+      "filtration_remaining": {
+        "name": "Temps restant de filtration"
+      },
+      "output_remaining": {
+        "name": "Temps restant de la sortie {number}"
+      },
+      "filtration_mode": {
+        "name": "Mode de la filtration",
+        "state": {
+          "off": "Arrêt",
+          "on": "Marche",
+          "auto": "Auto"
+        }
+      },
+      "output_mode": {
+        "name": "Mode de la sortie {number}",
+        "state": {
+          "off": "Arrêt",
+          "on": "Marche",
+          "auto": "Auto"
+        }
+      },
+      "filtration_rule": {
+        "name": "Règle de la filtration",
+        "state": {
+          "time": "Plages horaires",
+          "temperature": "Selon la température",
+          "variable_speed": "Vitesse variable"
+        }
+      },
+      "output_rule": {
+        "name": "Règle de la sortie {number}",
+        "state": {
+          "time": "Plages horaires",
+          "temperature": "Selon la température",
+          "variable_speed": "Vitesse variable"
+        }
+      },
+      "filtration_type": {
+        "name": "Type de la sortie filtration",
+        "state": {
+          "auxiliary": "Auxiliaire",
+          "filtration": "Filtration",
+          "treatment": "Traitement",
+          "robot": "Robot",
+          "heat_pump": "Pompe à chaleur",
+          "lighting": "Éclairage",
+          "backwash": "Contre-lavage",
+          "pulse": "Impulsion"
+        }
+      },
+      "output_type": {
+        "name": "Type de la sortie {number}",
+        "state": {
+          "auxiliary": "Auxiliaire",
+          "filtration": "Filtration",
+          "treatment": "Traitement",
+          "robot": "Robot",
+          "heat_pump": "Pompe à chaleur",
+          "lighting": "Éclairage",
+          "backwash": "Contre-lavage",
+          "pulse": "Impulsion"
+        }
+      },
+      "temperature_band": {
+        "name": "Tranche de température"
+      },
+      "filtration_planned_today": {
+        "name": "Filtration prévue aujourd'hui"
+      },
+      "controller_temperature": {
+        "name": "Température du coffret"
+      },
+      "last_communication": {
+        "name": "Dernière communication"
+      }
+    },
+    "binary_sensor": {
+      "filtration_running": {
+        "name": "Filtration"
+      },
+      "output_running": {
+        "name": "Sortie {number}"
+      },
+      "radio_pending": {
+        "name": "Commande radio en attente"
+      },
+      "input_alert": {
+        "name": "Alerte d'entrée"
+      }
+    }
   }
 }
