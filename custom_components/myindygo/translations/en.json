@@ -1,0 +1,17 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "MyIndygo account",
+        "description": "Sign in with the e-mail and password of your MyIndygo app account.",
+        "data": {
+          "email": "Email",
+          "password": "Password"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Account is already configured"
+    }
+  }
+}

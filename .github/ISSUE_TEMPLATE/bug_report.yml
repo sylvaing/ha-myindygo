@@ -1,0 +1,37 @@
+name: Bug report
+description: Something does not work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is an unofficial project, not affiliated with Solem. Please do not post your e-mail,
+        password, tokens or serial numbers. Attach the integration diagnostics instead (they are redacted).
+  - type: input
+    id: version
+    attributes:
+      label: Integration version
+    validations:
+      required: true
+  - type: input
+    id: ha
+    attributes:
+      label: Home Assistant version
+    validations:
+      required: true
+  - type: textarea
+    id: hardware
+    attributes:
+      label: Your MyIndygo equipment
+      description: e.g. LR-MB-10 gateway, LR-PC controller, IPX electrolyser
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      render: text

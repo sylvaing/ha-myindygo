@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+# never commit real account data, captures or credentials
+captures/
+*.token
+credentials*
