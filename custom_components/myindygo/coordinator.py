@@ -29,6 +29,7 @@ from .const import (
     DEFAULT_LIVE_INTERVAL,
     DEFAULT_PLATFORM_INTERVAL,
     DOMAIN,
+    MANUFACTURER_TYPE_GATEWAY_LR_MB_10,
     MANUFACTURER_TYPE_POOL_CONTROLLER_LR_PC,
 )
 
@@ -55,6 +56,13 @@ class CloudData:
     programs: dict[str, dict[str, Any]] = field(default_factory=dict)
     # controller module id -> programs as compiled in the controller (``sched`` matrix)
     device_programs: dict[str, dict[str, Any]] = field(default_factory=dict)
+    # gateway module id -> ``information`` read through the relay (uptime, links, firmware)
+    gateway_info: dict[str, dict[str, Any]] = field(default_factory=dict)
+
+
+def is_gateway(module: dict[str, Any]) -> bool:
+    """Return True for a MyIndygo gateway (LR-MB-10)."""
+    return str(module.get("manufacturerType", "")).upper() == MANUFACTURER_TYPE_GATEWAY_LR_MB_10
 
 
 def gateway_of(module: dict[str, Any], modules: dict[str, dict[str, Any]]) -> dict[str, Any] | None:
@@ -88,6 +96,13 @@ class MyIndygoCloudCoordinator(DataUpdateCoordinator[CloudData]):
                 data.pools[pool["id"]] = await self.client.async_get_pool_status(pool["id"])
 
             for module in modules.values():
+                if is_gateway(module):
+                    try:
+                        data.gateway_info[module["id"]] = await self.client.async_get_device(
+                            module["serialNumber"], "information"
+                        )
+                    except MyIndygoConnectionError as err:
+                        _LOGGER.debug("Cannot read the information of %s: %s", module.get("name"), err)
                 if not is_pool_controller(module):
                     continue
                 data.programs[module["id"]] = await self.client.async_get_programs(module["id"])

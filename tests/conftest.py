@@ -20,6 +20,7 @@ MODULES = [
         "type": "lr-mb-10",
         "serialNumber": "10000000AAAAAA0001",
         "softwareVersion": "6.3.1",
+        "isOnline": True,
     },
     {
         "id": "ipx",
@@ -100,6 +101,15 @@ MODULES = [
 ]
 
 
+GATEWAY_INFO = {
+    "mtype": "10",
+    "vsoft": "6.3.1",
+    "cdate": "2026-11-15T23:38:11+01:00",
+    "up": 270190,
+    "reset": 11,
+    "wifiLink": True,
+    "web": True,
+}
 POOL_STATUS = {
     "id": "pool1",
     "status": {"lastTemperatureMeasure": {"value": 19.29, "date": 1794665160}},
@@ -183,5 +193,7 @@ def mock_client() -> Generator[AsyncMock]:
 
 async def _device(gateway_serial: str, endpoint: str, child_serial: str | None = None) -> dict:
     assert gateway_serial == "10000000AAAAAA0001"
+    if child_serial is None:
+        return {"information": GATEWAY_INFO}[endpoint]
     assert child_serial == "150302BBBBBB0001"
     return {"status": STATUS, "programs": DEVICE_PROGRAMS}[endpoint]

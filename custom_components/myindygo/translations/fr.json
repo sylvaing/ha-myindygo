@@ -200,6 +200,12 @@
       },
       "last_report": {
         "name": "Dernière remontée"
+      },
+      "last_restart": {
+        "name": "Dernier redémarrage"
+      },
+      "reset_code": {
+        "name": "Code de réinitialisation"
       }
     },
     "binary_sensor": {
@@ -241,6 +247,12 @@
       },
       "command_input": {
         "name": "Entrée commande externe"
+      },
+      "cloud_connection": {
+        "name": "Connexion au cloud"
+      },
+      "wifi_link": {
+        "name": "Liaison Wi-Fi"
       }
     }
   }
