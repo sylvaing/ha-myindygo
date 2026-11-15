@@ -11,6 +11,17 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from . import MyIndygoConfigEntry, MyIndygoData
 from .controller import ControllerEntity, ValueFn, controllers, output_indexes, output_naming
+from .electrolyser import (
+    DEVICE_STATE_INPUTS,
+    OUTPUT_ELECTROLYZER,
+    ElectrolyserEntity,
+    ModuleFn,
+    alarms,
+    device_state,
+    electrolysers,
+    has_output,
+    output_value,
+)
 from .pool import output_status
 
 PARALLEL_UPDATES = 0
@@ -58,7 +69,90 @@ async def async_setup_entry(
                 device_class=BinarySensorDeviceClass.PROBLEM,
             )
         )
+    for module in electrolysers(data):
+        entities.extend(_electrolyser_binary_sensors(data, module))
     async_add_entities(entities)
+
+
+def _electrolyser_binary_sensors(data: MyIndygoData, module: dict[str, Any]) -> list[BinarySensorEntity]:
+    def sensor(key: str, value_fn: ModuleFn, **kwargs: Any) -> ElectrolyserBinarySensor:
+        return ElectrolyserBinarySensor(data, module, key, key, value_fn, **kwargs)
+
+    entities: list[BinarySensorEntity] = [
+        sensor(
+            "production",
+            lambda m: device_state(m, "prodStatus"),
+            device_class=BinarySensorDeviceClass.RUNNING,
+        ),
+        sensor(
+            "ph_injection",
+            lambda m: device_state(m, "pHInjection"),
+            device_class=BinarySensorDeviceClass.RUNNING,
+        ),
+        sensor("wintering", _wintered),
+        ElectrolyserAlarmSensor(data, module, "alarm", "alarm", lambda m: bool(alarms(m))),
+    ]
+    if has_output(module, OUTPUT_ELECTROLYZER):
+        entities.append(sensor("boost", lambda m: output_value(m, OUTPUT_ELECTROLYZER, "boostEnabled")))
+    for state_key, key in DEVICE_STATE_INPUTS.items():
+        entities.append(
+            sensor(
+                key,
+                lambda m, k=state_key: device_state(m, k),
+                category=EntityCategory.DIAGNOSTIC,
+                enabled=False,
+            )
+        )
+    return entities
+
+
+def _wintered(module: dict[str, Any]) -> bool | None:
+    values = [
+        (output.get("ipxData") or {}).get("isWintered")
+        for output in module.get("outputs", [])
+        if isinstance((output.get("ipxData") or {}).get("isWintered"), bool)
+    ]
+    return any(values) if values else None
+
+
+class ElectrolyserBinarySensor(ElectrolyserEntity, BinarySensorEntity):
+    """A binary sensor of an electrolyser."""
+
+    def __init__(
+        self,
+        data: MyIndygoData,
+        module: dict[str, Any],
+        key: str,
+        translation_key: str,
+        value_fn: ModuleFn,
+        *,
+        device_class: BinarySensorDeviceClass | None = None,
+        category: EntityCategory | None = None,
+        enabled: bool = True,
+    ) -> None:
+        super().__init__(data, module, key, translation_key, value_fn)
+        self._attr_device_class = device_class
+        self._attr_entity_category = category
+        self._attr_entity_registry_enabled_default = enabled
+
+    @property
+    def is_on(self) -> bool | None:
+        value = self._value()
+        return value if isinstance(value, bool) else None
+
+
+class ElectrolyserAlarmSensor(ElectrolyserBinarySensor):
+    """On when the electrolyser reports an alarm; the texts are in the ``alarms`` attribute."""
+
+    _attr_device_class = BinarySensorDeviceClass.PROBLEM
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(*args, device_class=BinarySensorDeviceClass.PROBLEM, **kwargs)
+
+    @property
+    def extra_state_attributes(self) -> dict[str, Any]:
+        module = self.current_module
+        return {"alarms": alarms(module) if module else []}
 
 
 class ControllerBinarySensor(ControllerEntity, BinarySensorEntity):
