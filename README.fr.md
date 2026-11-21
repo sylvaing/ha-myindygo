@@ -8,14 +8,15 @@
 Intégration personnalisée Home Assistant pour les équipements de piscine **Solem MyIndygo**, qui utilise la
 même API cloud que l'application mobile MyIndygo.
 
-## État
+**La version 0.1.0 est en lecture seule** : elle affiche vos équipements dans Home Assistant, elle ne les
+pilote pas. Les commandes (marche forcée, programmes, consignes de l'électrolyseur) sont prévues pour la
+0.2.0, voir la [feuille de route](https://github.com/sylvaing/ha-myindygo/milestones).
 
-🚧 **En développement — pas encore utilisable.** L'avancement est suivi dans les
-[issues](https://github.com/sylvaing/ha-myindygo/issues) et les
-[jalons](https://github.com/sylvaing/ha-myindygo/milestones).
+## Prérequis
 
-La première version (v0.1.0) sera en **lecture seule** : elle expose des capteurs, elle ne pilote pas vos
-équipements.
+- Home Assistant 2026.11 ou plus récent
+- Un compte MyIndygo (e-mail et mot de passe de l'application mobile) avec des équipements joignables par
+  une passerelle MyIndygo
 
 ## Équipements pris en charge
 
@@ -24,28 +25,99 @@ Développé et testé avec :
 | Appareil | Rôle |
 |---|---|
 | LR-MB-10 | passerelle LoRa (Wi-Fi) |
-| LR-PC | coffret piscine : pompe de filtration + 2 sorties auxiliaires, température de l'eau |
+| LR-PC | coffret piscine : pompe de filtration, 2 sorties auxiliaires, température de l'eau |
 | IPX (PoolTech) | interface vers un électrolyseur au sel avec régulation pH |
 
-D'autres équipements MyIndygo peuvent fonctionner mais ne sont pas testés.
-
-## Entités prévues (v0.1.0)
-
-- **Coffret** : température de l'eau, filtration en marche, temps restant, mode, tranche de température
-  active, état des sorties auxiliaires.
-- **Électrolyseur** : pH, sel, consigne de production, consigne pH, modes, boost, alarmes, tension et heures
-  de cellule.
-- **Passerelle** : connexion, firmware.
+D'autres équipements MyIndygo peuvent fonctionner en partie mais ne sont pas testés. Les retours et les
+diagnostics sont les bienvenus.
 
 ## Installation
 
-Pas encore disponible. Une fois la v0.1.0 publiée, elle s'installera via [HACS](https://hacs.xyz) en dépôt
-personnalisé.
+### Avec HACS (recommandé)
+
+1. Dans HACS, ouvrez le menu ⋮ → **Dépôts personnalisés**.
+2. Ajoutez `https://github.com/sylvaing/ha-myindygo` avec le type **Intégration**.
+3. Cherchez **MyIndygo (Solem)**, téléchargez-la, puis redémarrez Home Assistant.
+
+### Manuellement
+
+Copiez `custom_components/myindygo` dans le dossier `custom_components` de votre configuration Home
+Assistant, puis redémarrez Home Assistant.
+
+## Configuration
+
+**Paramètres → Appareils et services → Ajouter une intégration → MyIndygo (Solem)**, puis saisissez l'e-mail
+et le mot de passe de votre compte de l'application MyIndygo. Un appareil est créé par module : passerelle →
+coffret → électrolyseur.
+
+Options (**Configurer** sur l'intégration) :
+
+| Option | Par défaut | Plage |
+|---|---|---|
+| Intervalle de l'état du coffret | 2 min | 1–30 min |
+| Intervalle des données cloud | 15 min | 10–60 min |
+| Identifiant client de l'application (avancé) | intégré | à laisser vide, sauf si l'identifiant de l'application change |
+
+Gardez des intervalles prudents : le cloud MyIndygo n'est pas prévu pour des interrogations fréquentes.
+
+## Entités
+
+### Coffret (LR-PC)
+
+| Entité | Remarques |
+|---|---|
+| Température de l'eau | °C |
+| Filtration, Sortie 1, Sortie 2 | marche / arrêt |
+| État de la filtration / de la sortie | arrêt, programme, marche forcée, boost, hors-gel, pause |
+| Temps restant | minutes |
+| Mode | arrêt, marche, auto |
+| Tranche de température | tranche utilisée par le programme selon la température, par ex. `18-20 °C` |
+| Filtration prévue aujourd'hui | heures, décodées du planning du coffret |
+| Diagnostics | dernière communication, commande radio en attente, alerte d'entrée, règle et type des sorties, température du coffret (désactivée par défaut) |
+
+### Électrolyseur (IPX PoolTech)
+
+| Entité | Remarques |
+|---|---|
+| pH, consigne pH, régulation pH | |
+| Redox | seulement si une sonde redox est installée |
+| Sel | g/L |
+| Consigne de production, mode d'électrolyse | %, arrêt / pourcentage / auto |
+| Boost, temps de boost restant | |
+| Production, injection pH, hivernage | |
+| Alarme | les textes des alarmes sont dans l'attribut `alarms` |
+| Diagnostics | heures d'électrolyse, tension de la cellule, dernière remontée ; entrées débit, volet, bidon pH et commande externe (désactivées par défaut) |
+
+L'électrolyseur ne remonte ses données que pendant la filtration, environ toutes les 10 à 15 minutes :
+l'entité **Dernière remontée** indique l'âge de ses valeurs.
+
+### Passerelle (LR-MB-10)
+
+Connexion au cloud ; diagnostics : liaison Wi-Fi, dernier redémarrage, code de réinitialisation (désactivé
+par défaut).
+
+## Fonctionnement
+
+L'intégration interroge le cloud MyIndygo (`myindygo.com`) comme l'application mobile :
+
+- toutes les 2 minutes, l'état temps réel du coffret, lu à travers la passerelle ;
+- toutes les 15 minutes, les modules (dont les données de l'électrolyseur), les mesures de la piscine et
+  les programmes.
+
+Une coupure courte de la passerelle conserve le dernier état du coffret pendant 6 minutes environ.
+
+## Dépannage
+
+Téléchargez les diagnostics depuis la page de l'intégration (⋮ → **Télécharger les diagnostics**) et
+joignez-les à une [issue](https://github.com/sylvaing/ha-myindygo/issues). Les données personnelles
+(e-mail, adresse, localisation, numéros de série, adresses MAC, jetons) en sont retirées. Ne publiez jamais
+votre mot de passe.
 
 ## Confidentialité
 
 L'e-mail et le mot de passe MyIndygo sont stockés uniquement dans Home Assistant et envoyés uniquement au
-cloud MyIndygo (`myindygo.com`), exactement comme le fait l'application mobile.
+cloud MyIndygo, exactement comme le fait l'application mobile. Pour se connecter, l'intégration utilise
+l'identifiant client de l'application MyIndygo, le même pour tous les utilisateurs.
 
 ## Licence
 
