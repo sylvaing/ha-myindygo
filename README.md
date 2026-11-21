@@ -10,8 +10,9 @@ Home Assistant custom integration for **Solem MyIndygo** pool equipment, using t
 MyIndygo mobile app.
 
 Version 0.1.0 is read-only. The next version adds the manual commands of the pool controller outputs
-(forced run, boost, pause, stop, see [Actions](#actions)); programs and electrolyser setpoints are on
-the [roadmap](https://github.com/sylvaing/ha-myindygo/milestones).
+(forced run, boost, pause, stop, see [Actions](#actions)) and the electrolyser settings (see
+[Electrolyser settings](#electrolyser-settings)); programs are on the
+[roadmap](https://github.com/sylvaing/ha-myindygo/milestones).
 
 ## Requirements
 
@@ -91,6 +92,31 @@ Please keep the intervals conservative: the MyIndygo cloud is not designed for f
 
 The electrolyser only reports while the filtration runs, about every 10–15 minutes: check
 **Last report** to know how old its values are.
+
+### Electrolyser settings
+
+> **Not tested on a real electrolyser yet** (the only test installation is wintering). The keys, ranges
+> and rules come from the MyIndygo app. Feedback is welcome.
+
+| Entity | Type | Values |
+|---|---|---|
+| pH setpoint | number | 6.8 – 7.6, step 0.1; only while the pH regulation is on |
+| pH regulation | select | off / on |
+| Production setpoint | number | 0 – 100 %, step 1 (step 5 on some models, like in the app); only in the percentage mode |
+| Electrolysis mode | select | off / percentage (auto needs a redox or chlorine probe and is not offered) |
+| Boost 12 h, Boost 24 h, Stop boost | button | |
+| Settings pending | binary sensor | on while a setting waits for the electrolyser; the requests are in the `pending` attribute |
+
+A new setting is **not applied at once**: the MyIndygo cloud keeps it as *pending* and hands it over at
+the next exchange with the electrolyser, about 10–15 minutes later, and only while the filtration runs.
+Until then the entities keep showing the value reported by the electrolyser, and the requested one is in
+their `pending_value` attribute and in **Settings pending**. When the electrolyser reports again, the
+integration logs a warning if the setting was not applied, or if it is still pending after 30 minutes.
+
+Like in the app, a change is refused while the filtration is stopped (or its state is unknown), and boost
+is refused while the electrolyser is wintering. Boost is offered as buttons rather than a select because
+the electrolyser reports whether a boost runs and its remaining time (**Boost**, **Boost remaining
+time**), not which duration was requested.
 
 ### Gateway (LR-MB-10)
 

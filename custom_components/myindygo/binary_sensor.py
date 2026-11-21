@@ -24,6 +24,7 @@ from .electrolyser import (
     output_value,
 )
 from .gateway import GatewayEntity, GatewayFn, gateways
+from .ipx_settings import all_pending
 from .pool import output_status
 
 PARALLEL_UPDATES = 0
@@ -126,6 +127,9 @@ def _electrolyser_binary_sensors(data: MyIndygoData, module: dict[str, Any]) -> 
         ),
         sensor("wintering", _wintered),
         ElectrolyserAlarmSensor(data, module, "alarm", "alarm", lambda m: bool(alarms(m))),
+        ElectrolyserPendingSensor(
+            data, module, "settings_pending", "settings_pending", lambda m: bool(all_pending(m))
+        ),
     ]
     if has_output(module, OUTPUT_ELECTROLYZER):
         entities.append(sensor("boost", lambda m: output_value(m, OUTPUT_ELECTROLYZER, "boostEnabled")))
@@ -188,6 +192,15 @@ class ElectrolyserAlarmSensor(ElectrolyserBinarySensor):
     def extra_state_attributes(self) -> dict[str, Any]:
         module = self.current_module
         return {"alarms": alarms(module) if module else []}
+
+
+class ElectrolyserPendingSensor(ElectrolyserBinarySensor):
+    """On while a setting waits for the electrolyser; the requests are in the ``pending`` attribute."""
+
+    @property
+    def extra_state_attributes(self) -> dict[str, Any]:
+        module = self.current_module
+        return {"pending": all_pending(module) if module else {}}
 
 
 class ControllerBinarySensor(ControllerEntity, BinarySensorEntity):

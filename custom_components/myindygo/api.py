@@ -161,6 +161,20 @@ class MyIndygoApiClient:
         """Return one module with its inputs, outputs and IPX data."""
         return await self._async_request("GET", "/api/getModuleWithHisUsers", params={"module": module_id})
 
+    async def async_send_ipx_data(self, output_id: str, values: dict[str, Any]) -> dict[str, Any]:
+        """Request a setting of an IPX output (``POST /api/outputs/<output id>/ipxData``).
+
+        ``values`` is the ``ipxData`` object, e.g. ``{"pHSetpoint": 7.3}`` (one key per request,
+        like the app). The platform stores it in ``pendingIpxData`` until the device picks it up.
+        The app treats an answer with an ``err`` key as a failure; the answer is not used otherwise.
+        """
+        payload = await self._async_request(
+            "POST", f"/api/outputs/{output_id}/ipxData", json={"ipxData": values}
+        )
+        if isinstance(payload, dict) and payload.get("err"):
+            raise MyIndygoConnectionError(f"/api/outputs/{output_id}/ipxData: {payload['err']}")
+        return payload if isinstance(payload, dict) else {}
+
     async def async_get_pools(self) -> list[dict[str, Any]]:
         """Return the pools of the user."""
         user = await self._async_request("POST", "/api/getUser", json={"attributesToPopulate": ["pools"]})

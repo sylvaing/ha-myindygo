@@ -54,6 +54,71 @@
     }
   },
   "entity": {
+    "button": {
+      "boost_12h": {
+        "name": "Boost 12 h"
+      },
+      "boost_24h": {
+        "name": "Boost 24 h"
+      },
+      "boost_stop": {
+        "name": "Stop boost"
+      }
+    },
+    "number": {
+      "ph_setpoint": {
+        "name": "pH setpoint"
+      },
+      "production_setpoint": {
+        "name": "Production setpoint"
+      }
+    },
+    "select": {
+      "ph_regulation": {
+        "name": "pH regulation",
+        "state": {
+          "off": "Off",
+          "on": "On"
+        }
+      },
+      "electrolysis_mode": {
+        "name": "Electrolysis mode",
+        "state": {
+          "off": "Off",
+          "percentage": "Percentage"
+        }
+      },
+      "filtration_mode": {
+        "name": "Filtration mode",
+        "state": {
+          "off": "Off",
+          "on": "On",
+          "auto": "Auto"
+        }
+      },
+      "output_mode": {
+        "name": "Output {number} mode",
+        "state": {
+          "off": "Off",
+          "on": "On",
+          "auto": "Auto"
+        }
+      },
+      "filtration_daily_adjustment": {
+        "name": "Filtration daily adjustment",
+        "state": {
+          "minus_4": "Standard −4 h",
+          "minus_3": "Standard −3 h",
+          "minus_2": "Standard −2 h",
+          "minus_1": "Standard −1 h",
+          "standard": "Standard",
+          "plus_1": "Standard +1 h",
+          "plus_2": "Standard +2 h",
+          "plus_3": "Standard +3 h",
+          "plus_4": "Standard +4 h"
+        }
+      }
+    },
     "sensor": {
       "water_temperature": {
         "name": "Water temperature"
@@ -233,6 +298,9 @@
       "alarm": {
         "name": "Alarm"
       },
+      "settings_pending": {
+        "name": "Settings pending"
+      },
       "boost": {
         "name": "Boost"
       },
@@ -253,38 +321,6 @@
       },
       "wifi_link": {
         "name": "Wi-Fi link"
-      }
-    },
-    "select": {
-      "filtration_mode": {
-        "name": "Filtration mode",
-        "state": {
-          "off": "Off",
-          "on": "On",
-          "auto": "Auto"
-        }
-      },
-      "output_mode": {
-        "name": "Output {number} mode",
-        "state": {
-          "off": "Off",
-          "on": "On",
-          "auto": "Auto"
-        }
-      },
-      "filtration_daily_adjustment": {
-        "name": "Filtration daily adjustment",
-        "state": {
-          "minus_4": "Standard −4 h",
-          "minus_3": "Standard −3 h",
-          "minus_2": "Standard −2 h",
-          "minus_1": "Standard −1 h",
-          "standard": "Standard",
-          "plus_1": "Standard +1 h",
-          "plus_2": "Standard +2 h",
-          "plus_3": "Standard +3 h",
-          "plus_4": "Standard +4 h"
-        }
       }
     }
   },
@@ -325,6 +361,30 @@
     }
   },
   "exceptions": {
+    "filtration_stopped": {
+      "message": "The filtration is stopped: the electrolyser only takes new settings while the filtration runs. Start the filtration first."
+    },
+    "filtration_unknown": {
+      "message": "The state of the filtration is unknown (pool controller not reachable): the setting was not sent, since the electrolyser only takes new settings while the filtration runs."
+    },
+    "ph_regulation_off": {
+      "message": "The pH setpoint can only be changed while the pH regulation is on."
+    },
+    "production_not_percentage": {
+      "message": "The production setpoint can only be changed in the Percentage electrolysis mode."
+    },
+    "boost_wintering": {
+      "message": "The electrolyser is wintering: boost is not available."
+    },
+    "invalid_setting": {
+      "message": "{value} is not an accepted value for this setting."
+    },
+    "no_ipx_output": {
+      "message": "This electrolyser output is unknown to the MyIndygo cloud."
+    },
+    "setting_failed": {
+      "message": "The setting could not be sent to the electrolyser: {error}"
+    },
     "output_not_auto": {
       "message": "This output is in mode {mode}: the controller only accepts manual commands on an output in mode Auto. Change its mode first (mode select)."
     },
