@@ -1,4 +1,4 @@
-"""Async client for the MyIndygo cloud API (read-only).
+"""Async client for the MyIndygo cloud API.
 
 The protocol was documented from the MyIndygo Android app and verified on a real account.
 Two families of URLs share the same bearer token:
@@ -49,7 +49,7 @@ def child_id(serial_number: str) -> str:
 
 
 class MyIndygoApiClient:
-    """Minimal read-only client for the MyIndygo cloud."""
+    """Minimal client for the MyIndygo cloud (reads, plus the manual commands of a pool controller)."""
 
     def __init__(
         self,
@@ -186,8 +186,32 @@ class MyIndygoApiClient:
         The request goes through the cloud to the gateway, which answers from its own state
         or, for a radio child (``child_serial``), from the last radio exchange.
         """
-        path = f"/api/module/{gateway_serial}/{endpoint}"
-        if child_serial:
-            path += f"/{child_id(child_serial)}"
-        date = datetime.now().astimezone().isoformat(timespec="seconds")
-        return await self._async_request("GET", path, extra_headers={"Date": date})
+        path = _relay_path(gateway_serial, endpoint, child_serial)
+        return await self._async_request("GET", path, extra_headers=_date_header())
+
+    async def async_send_manual_command(
+        self, gateway_serial: str, child_serial: str, command: dict[str, Any]
+    ) -> dict[str, Any]:
+        """Send a manual command to an output of a pool controller (``POST …/manual/<child id>``).
+
+        ``command`` is the ``pool`` object of the device API, e.g.
+        ``{"index": 0, "action": 2, "manualDuration": 3600}``. The relay answers with the
+        controller ``status``; ``radio: ["cmd"]`` means the command is still waiting for the
+        radio link, so the answer does not prove that the output switched.
+        """
+        path = _relay_path(gateway_serial, "manual", child_serial)
+        payload = await self._async_request(
+            "POST", path, json={"pool": command}, extra_headers=_date_header()
+        )
+        return payload if isinstance(payload, dict) else {}
+
+
+def _relay_path(gateway_serial: str, endpoint: str, child_serial: str | None) -> str:
+    path = f"/api/module/{gateway_serial}/{endpoint}"
+    if child_serial:
+        path += f"/{child_id(child_serial)}"
+    return path
+
+
+def _date_header() -> dict[str, str]:
+    return {"Date": datetime.now().astimezone().isoformat(timespec="seconds")}

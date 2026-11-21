@@ -255,5 +255,61 @@
         "name": "Wi-Fi link"
       }
     }
+  },
+  "services": {
+    "start_manual_run": {
+      "name": "Start a forced run",
+      "description": "Runs a pool controller output (filtration or auxiliary) for a given time, then returns it to its program. The output must be in mode Auto.",
+      "fields": {
+        "duration": {
+          "name": "Duration",
+          "description": "Running time, from 1 minute to 24 hours."
+        }
+      }
+    },
+    "start_boost": {
+      "name": "Start a boost",
+      "description": "Starts a boost of the filtration or treatment output for a given time. The output must be in mode Auto.",
+      "fields": {
+        "duration": {
+          "name": "Duration",
+          "description": "Boost time, from 1 minute to 24 hours (seconds are ignored)."
+        }
+      }
+    },
+    "pause": {
+      "name": "Pause",
+      "description": "Pauses a pool controller output, its program included, for a number of days. The output must be in mode Auto.",
+      "fields": {
+        "days": {
+          "name": "Days",
+          "description": "Number of days, from 1 to 30."
+        }
+      }
+    },
+    "stop_manual_command": {
+      "name": "Stop the manual command",
+      "description": "Ends the forced run, boost or pause of a pool controller output: it goes back to its program."
+    }
+  },
+  "exceptions": {
+    "output_not_auto": {
+      "message": "This output is in mode {mode}: the controller only accepts manual commands on an output in mode Auto. Change its mode in the MyIndygo app first."
+    },
+    "boost_not_supported": {
+      "message": "Boost is only available for the filtration and treatment outputs."
+    },
+    "not_an_output": {
+      "message": "{entity_id} is not a pool controller output."
+    },
+    "no_gateway": {
+      "message": "The gateway relaying this pool controller is unknown."
+    },
+    "auth_failed": {
+      "message": "The MyIndygo cloud rejected the credentials. Reauthenticate the integration."
+    },
+    "command_failed": {
+      "message": "The command could not be sent to the pool controller: {error}"
+    }
   }
 }

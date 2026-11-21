@@ -177,3 +177,63 @@ def test_child_id() -> None:
     assert child_id("FD0001020200112233AABBCC0001") == "AABBCC"
     with pytest.raises(ValueError):
         child_id("short")
+
+
+GATEWAY_SN = "10000007ABCD0001"
+CHILD_SN = "150302ABCDEF0001"
+MANUAL_PATH = "/api/module/10000007ABCD0001/manual/ABCDEF"
+COMMAND = {"index": 0, "action": 2, "manualDuration": 3600}
+
+
+async def test_manual_command_body_and_answer() -> None:
+    session = FakeSession()
+    session.add("POST", "/oauth2/token", payload=TOKEN)
+    session.add("POST", MANUAL_PATH, payload={"pool": [], "radio": ["cmd"]})
+    client = make_client(session)
+
+    answer = await client.async_send_manual_command(GATEWAY_SN, CHILD_SN, COMMAND)
+
+    assert answer == {"pool": [], "radio": ["cmd"]}
+    call = session.calls[1]
+    assert call["json"] == {"pool": COMMAND}
+    assert call["headers"]["Authorization"] == "Bearer abc"
+    assert "T" in call["headers"]["Date"]
+
+
+async def test_manual_command_relogin_once_on_403() -> None:
+    session = FakeSession()
+    session.add("POST", "/oauth2/token", payload=TOKEN)
+    session.add("POST", MANUAL_PATH, status=403, payload=None)
+    session.add("POST", "/oauth2/token", payload={**TOKEN, "access_token": "new"})
+    session.add("POST", MANUAL_PATH, payload={"pool": []})
+    client = make_client(session)
+
+    assert await client.async_send_manual_command(GATEWAY_SN, CHILD_SN, COMMAND) == {"pool": []}
+    assert session.calls[-1]["headers"]["Authorization"] == "Bearer new"
+    assert session.calls[-1]["json"] == {"pool": COMMAND}
+
+
+async def test_manual_command_denied_twice() -> None:
+    session = FakeSession()
+    session.add("POST", "/oauth2/token", payload=TOKEN)
+    session.add("POST", MANUAL_PATH, status=401, payload=None)
+    session.add("POST", "/oauth2/token", payload=TOKEN)
+    session.add("POST", MANUAL_PATH, status=401, payload=None)
+    with pytest.raises(MyIndygoAuthError):
+        await make_client(session).async_send_manual_command(GATEWAY_SN, CHILD_SN, COMMAND)
+
+
+@pytest.mark.parametrize("answer", [(504, None), (200, {"error": {"code": "module_offline"}})])
+async def test_manual_command_relay_errors(answer: tuple[int, Any]) -> None:
+    session = FakeSession()
+    session.add("POST", "/oauth2/token", payload=TOKEN)
+    session.add("POST", MANUAL_PATH, status=answer[0], payload=answer[1])
+    with pytest.raises(MyIndygoConnectionError):
+        await make_client(session).async_send_manual_command(GATEWAY_SN, CHILD_SN, COMMAND)
+
+
+async def test_manual_command_non_object_answer() -> None:
+    session = FakeSession()
+    session.add("POST", "/oauth2/token", payload=TOKEN)
+    session.add("POST", MANUAL_PATH, payload=True)
+    assert await make_client(session).async_send_manual_command(GATEWAY_SN, CHILD_SN, COMMAND) == {}

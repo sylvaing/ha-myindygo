@@ -255,5 +255,61 @@
         "name": "Liaison Wi-Fi"
       }
     }
+  },
+  "services": {
+    "start_manual_run": {
+      "name": "Lancer une marche forcée",
+      "description": "Met en marche une sortie du coffret (filtration ou auxiliaire) pendant une durée donnée, puis la rend à son programme. La sortie doit être en mode Auto.",
+      "fields": {
+        "duration": {
+          "name": "Durée",
+          "description": "Durée de marche, de 1 minute à 24 heures."
+        }
+      }
+    },
+    "start_boost": {
+      "name": "Lancer un boost",
+      "description": "Lance un boost de la sortie filtration ou traitement pendant une durée donnée. La sortie doit être en mode Auto.",
+      "fields": {
+        "duration": {
+          "name": "Durée",
+          "description": "Durée du boost, de 1 minute à 24 heures (les secondes sont ignorées)."
+        }
+      }
+    },
+    "pause": {
+      "name": "Mettre en pause",
+      "description": "Met en pause une sortie du coffret, programme compris, pendant un nombre de jours. La sortie doit être en mode Auto.",
+      "fields": {
+        "days": {
+          "name": "Jours",
+          "description": "Nombre de jours, de 1 à 30."
+        }
+      }
+    },
+    "stop_manual_command": {
+      "name": "Arrêter la commande manuelle",
+      "description": "Termine la marche forcée, le boost ou la pause d'une sortie du coffret : elle revient à son programme."
+    }
+  },
+  "exceptions": {
+    "output_not_auto": {
+      "message": "Cette sortie est en mode {mode} : le coffret n'accepte les commandes manuelles que sur une sortie en mode Auto. Changez d'abord son mode dans l'app MyIndygo."
+    },
+    "boost_not_supported": {
+      "message": "Le boost n'est disponible que pour les sorties filtration et traitement."
+    },
+    "not_an_output": {
+      "message": "{entity_id} n'est pas une sortie du coffret piscine."
+    },
+    "no_gateway": {
+      "message": "La passerelle qui relaie ce coffret piscine est inconnue."
+    },
+    "auth_failed": {
+      "message": "Le cloud MyIndygo a refusé les identifiants. Réauthentifiez l'intégration."
+    },
+    "command_failed": {
+      "message": "La commande n'a pas pu être envoyée au coffret piscine : {error}"
+    }
   }
 }

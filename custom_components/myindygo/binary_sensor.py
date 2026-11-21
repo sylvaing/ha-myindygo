@@ -10,6 +10,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from . import MyIndygoConfigEntry, MyIndygoData
+from .commands import OutputCommandEntity
 from .controller import ControllerEntity, ValueFn, controllers, output_indexes, output_naming
 from .electrolyser import (
     DEVICE_STATE_INPUTS,
@@ -37,19 +38,7 @@ async def async_setup_entry(
     for module in controllers(data):
         for index in output_indexes(module):
             key, placeholders = output_naming(index, "filtration_running", "output_running")
-            entities.append(
-                ControllerBinarySensor(
-                    data,
-                    module,
-                    f"output_{index}_running",
-                    key,
-                    lambda ctx, i=index: (
-                        bool(o.get("value")) if (o := output_status(ctx.status or {}, i)) else None
-                    ),
-                    placeholders=placeholders,
-                    device_class=BinarySensorDeviceClass.RUNNING,
-                )
-            )
+            entities.append(OutputBinarySensor(data, module, index, key, placeholders))
         entities.append(
             ControllerBinarySensor(
                 data,
@@ -224,6 +213,29 @@ class ControllerBinarySensor(ControllerEntity, BinarySensorEntity):
     @property
     def is_on(self) -> bool | None:
         return self._value_fn(self.context)
+
+
+class OutputBinarySensor(ControllerBinarySensor, OutputCommandEntity):
+    """Running state of a controller output; target of the manual command actions."""
+
+    def __init__(
+        self,
+        data: MyIndygoData,
+        module: dict[str, Any],
+        index: int,
+        translation_key: str,
+        placeholders: dict[str, str] | None,
+    ) -> None:
+        super().__init__(
+            data,
+            module,
+            f"output_{index}_running",
+            translation_key,
+            lambda ctx: _running(ctx.status, index),
+            placeholders=placeholders,
+            device_class=BinarySensorDeviceClass.RUNNING,
+        )
+        self.output_index = index
 
 
 def _running(status: dict[str, Any] | None, index: int) -> bool | None:

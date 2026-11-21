@@ -8,9 +8,9 @@
 Home Assistant custom integration for **Solem MyIndygo** pool equipment, using the same cloud API as the
 MyIndygo mobile app.
 
-**Version 0.1.0 is read-only**: it shows your equipment in Home Assistant, it does not control it.
-Controls (forced run, programs, electrolyser setpoints) are planned for 0.2.0, see the
-[roadmap](https://github.com/sylvaing/ha-myindygo/milestones).
+Version 0.1.0 is read-only. The next version adds the manual commands of the pool controller outputs
+(forced run, boost, pause, stop, see [Actions](#actions)); programs and electrolyser setpoints are on
+the [roadmap](https://github.com/sylvaing/ha-myindygo/milestones).
 
 ## Requirements
 
@@ -93,6 +93,39 @@ The electrolyser only reports while the filtration runs, about every 10–15 min
 ### Gateway (LR-MB-10)
 
 Cloud connection; diagnostics: Wi-Fi link, last restart, reset code (disabled by default).
+
+## Actions
+
+The outputs of the pool controller accept the same manual commands as the MyIndygo app. Each action
+targets the running binary sensor of an output (**Filtration**, **Output 1**, **Output 2**), or the
+controller device to reach all its outputs:
+
+| Action | Parameter | Effect |
+|---|---|---|
+| `myindygo.start_manual_run` | duration (1 min – 24 h) | runs the output, then returns it to its program |
+| `myindygo.start_boost` | duration (1 min – 24 h) | boost of the filtration or treatment output |
+| `myindygo.pause` | days (1 – 30) | stops the output, its program included |
+| `myindygo.stop_manual_command` | — | ends the forced run, boost or pause |
+
+```yaml
+action: myindygo.start_manual_run
+target:
+  entity_id: binary_sensor.lrpc_xxxxxx_filtration
+data:
+  duration: "01:30:00"
+```
+
+Good to know:
+
+- The controller **silently ignores** a manual command on an output whose mode is not **Auto** (check
+  the *mode* sensor). The integration refuses the action with an error instead of pretending it
+  worked; change the mode in the MyIndygo app first. Boost is only offered for the filtration and
+  treatment outputs, like in the app.
+- The cloud answers before the radio exchange with the controller (**Radio command pending** is on
+  meanwhile). The integration reads the status again 10 seconds later and logs a warning if the
+  command had no visible effect.
+- An auxiliary output configured to force the filtration is commanded alone (the app also extends
+  the filtration in that case); variable speed pumps are not supported.
 
 ## How it works
 

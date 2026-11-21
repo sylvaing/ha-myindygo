@@ -1,0 +1,56 @@
+start_manual_run:
+  target:
+    entity:
+      integration: myindygo
+      domain: binary_sensor
+      device_class: running
+  fields:
+    duration:
+      required: true
+      default:
+        hours: 1
+        minutes: 0
+        seconds: 0
+      selector:
+        duration:
+
+start_boost:
+  target:
+    entity:
+      integration: myindygo
+      domain: binary_sensor
+      device_class: running
+  fields:
+    duration:
+      required: true
+      default:
+        hours: 2
+        minutes: 0
+        seconds: 0
+      selector:
+        duration:
+
+pause:
+  target:
+    entity:
+      integration: myindygo
+      domain: binary_sensor
+      device_class: running
+  fields:
+    days:
+      required: true
+      default: 1
+      selector:
+        number:
+          min: 1
+          max: 30
+          step: 1
+          unit_of_measurement: d
+          mode: box
+
+stop_manual_command:
+  target:
+    entity:
+      integration: myindygo
+      domain: binary_sensor
+      device_class: running

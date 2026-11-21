@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- Manual commands of the pool controller outputs, as entity actions on the output binary sensors
+  (or the controller device): `myindygo.start_manual_run` (duration), `myindygo.start_boost`
+  (duration, filtration and treatment outputs), `myindygo.pause` (days) and
+  `myindygo.stop_manual_command` (#15).
+- Commands on an output that is not in mode Auto are refused with an explanation, since the
+  controller silently ignores them; the status is read again 10 s after a command and a warning is
+  logged if it had no visible effect.
+
 ## 0.1.0 — 2026-11-21
 
 First release. **Read-only**: the integration shows your equipment, it does not control it yet.

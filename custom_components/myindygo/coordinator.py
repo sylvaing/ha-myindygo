@@ -14,12 +14,14 @@ A gateway outage only fails the live coordinator: the cloud data stays available
 from __future__ import annotations
 
 import logging
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import timedelta
 from typing import TYPE_CHECKING, Any
 
-from homeassistant.core import HomeAssistant
+from homeassistant.core import CALLBACK_TYPE, HomeAssistant, callback
 from homeassistant.exceptions import ConfigEntryAuthFailed
+from homeassistant.helpers.event import async_call_later
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .api import MyIndygoApiClient, MyIndygoAuthError, MyIndygoConnectionError
@@ -129,6 +131,10 @@ class MyIndygoCloudCoordinator(DataUpdateCoordinator[CloudData]):
 # 2-minute interval, 3 failures keep the last status for up to ~6 minutes.
 RELAY_GRACE_FAILURES = 3
 
+# Delay before re-reading the status after a manual command, in seconds. The relay answers
+# before the radio exchange with the controller; the MyIndygo app re-reads after 10 s.
+COMMAND_REFRESH_DELAY = 10
+
 
 class MyIndygoLiveCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
     """Read the real-time status of each pool controller through its gateway.
@@ -160,6 +166,43 @@ class MyIndygoLiveCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
         self.client = client
         self.cloud = cloud
         self._failures: dict[str, int] = {}
+        self._command_refresh_unsub: CALLBACK_TYPE | None = None
+        self._command_checks: list[Callable[[], None]] = []
+
+    @callback
+    def async_set_controller_status(self, module_id: str, status: dict[str, Any]) -> None:
+        """Store the status returned by a command (it may still show the radio pending)."""
+        self.async_set_updated_data({**(self.data or {}), module_id: status})
+
+    @callback
+    def async_schedule_command_refresh(self, check: Callable[[], None] | None = None) -> None:
+        """Re-read the status ``COMMAND_REFRESH_DELAY`` s after a command, then run ``check``.
+
+        Several commands in a row share one refresh; every check runs after it.
+        """
+        if check is not None:
+            self._command_checks.append(check)
+        if self._command_refresh_unsub is not None:
+            self._command_refresh_unsub()
+        self._command_refresh_unsub = async_call_later(
+            self.hass, COMMAND_REFRESH_DELAY, self._async_command_refresh
+        )
+
+    async def _async_command_refresh(self, _now: Any) -> None:
+        self._command_refresh_unsub = None
+        checks, self._command_checks = self._command_checks, []
+        # Not debounced: the checks need the status read now, not up to 10 s later.
+        await self.async_refresh()
+        for check in checks:
+            check()
+
+    async def async_shutdown(self) -> None:
+        """Also cancel a pending post-command refresh."""
+        if self._command_refresh_unsub is not None:
+            self._command_refresh_unsub()
+            self._command_refresh_unsub = None
+        self._command_checks.clear()
+        await super().async_shutdown()
 
     async def _async_update_data(self) -> dict[str, dict[str, Any]]:
         modules = self.cloud.data.modules if self.cloud.data else {}
