@@ -2,6 +2,7 @@
 
 > **Unofficial project.** Not affiliated with, endorsed by or supported by Solem.
 > "MyIndygo" and "Solem" are trademarks of their respective owners.
+> The integration icon is original artwork (a generic pool symbol), not a Solem or MyIndygo logo.
 
 🇫🇷 [Version française](README.fr.md)
 

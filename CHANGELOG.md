@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- Integration icon (original artwork, a generic pool symbol) shipped in the integration's `brand/`
+  folder, shown by Home Assistant (2026.3 and later) and HACS.
+
 ## 0.1.0 — 2026-11-21
 
 First release. **Read-only**: the integration shows your equipment, it does not control it yet.
