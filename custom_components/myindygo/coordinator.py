@@ -124,10 +124,20 @@ class MyIndygoCloudCoordinator(DataUpdateCoordinator[CloudData]):
         return data
 
 
+# Consecutive relay failures tolerated before a controller's live entities become unavailable.
+# The gateway's cloud connection drops for a few minutes several times a day; with the default
+# 2-minute interval, 3 failures keep the last status for up to ~6 minutes.
+RELAY_GRACE_FAILURES = 3
+
+
 class MyIndygoLiveCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
     """Read the real-time status of each pool controller through its gateway.
 
     Data: controller module id -> device ``status`` (outputs, raw sensor values, radio state).
+
+    A short relay outage keeps the last status of a controller for a few polls
+    (``RELAY_GRACE_FAILURES``) instead of making all its entities unavailable at once; the
+    ``Last communication`` entity still shows how old the status is.
     """
 
     config_entry: MyIndygoConfigEntry
@@ -149,6 +159,7 @@ class MyIndygoLiveCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
         )
         self.client = client
         self.cloud = cloud
+        self._failures: dict[str, int] = {}
 
     async def _async_update_data(self) -> dict[str, dict[str, Any]]:
         modules = self.cloud.data.modules if self.cloud.data else {}
@@ -157,19 +168,32 @@ class MyIndygoLiveCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
             for module in modules.values()
             if is_pool_controller(module) and (gateway := gateway_of(module, modules)) is not None
         ]
+        previous = self.data or {}
         result: dict[str, dict[str, Any]] = {}
         errors: list[str] = []
         for module, gateway in targets:
+            module_id = module["id"]
             try:
-                result[module["id"]] = await self.client.async_get_device(
+                result[module_id] = await self.client.async_get_device(
                     gateway["serialNumber"], "status", module["serialNumber"]
                 )
             except MyIndygoAuthError as err:
                 raise ConfigEntryAuthFailed(str(err)) from err
             except MyIndygoConnectionError as err:
+                failures = self._failures.get(module_id, 0) + 1
+                self._failures[module_id] = failures
                 errors.append(f"{module.get('name')}: {err}")
+                if module_id in previous and failures < RELAY_GRACE_FAILURES:
+                    _LOGGER.debug(
+                        "Keeping the last status of %s (relay failure %s/%s): %s",
+                        module.get("name"),
+                        failures,
+                        RELAY_GRACE_FAILURES,
+                        err,
+                    )
+                    result[module_id] = previous[module_id]
+            else:
+                self._failures.pop(module_id, None)
         if targets and not result:
             raise UpdateFailed(f"No pool controller status could be read ({'; '.join(errors)})")
-        if errors:
-            _LOGGER.debug("Some controller statuses could not be read: %s", errors)
         return result
