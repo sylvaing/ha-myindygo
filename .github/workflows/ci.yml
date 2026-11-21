@@ -54,5 +54,3 @@ jobs:
       - uses: hacs/action@22.5.0
         with:
           category: integration
-          # brand images are tracked in their own issue
-          ignore: brands
