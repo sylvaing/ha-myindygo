@@ -13,6 +13,7 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.myindygo.api import MyIndygoAuthError, MyIndygoConnectionError
 from custom_components.myindygo.const import CONF_LIVE_INTERVAL, CONF_PLATFORM_INTERVAL, DOMAIN
+from custom_components.myindygo.coordinator import RELAY_GRACE_FAILURES
 
 from .conftest import DEVICE_PROGRAMS, POOL_STATUS, STATUS
 
@@ -110,3 +111,40 @@ async def test_live_auth_error_starts_reauth(
     await mock_config_entry.runtime_data.live.async_refresh()
     await hass.async_block_till_done()
     assert any(mock_config_entry.async_get_active_flows(hass, {"reauth"}))
+
+
+async def test_live_grace_period_keeps_last_status(
+    hass: HomeAssistant, mock_client: AsyncMock, mock_config_entry: MockConfigEntry
+) -> None:
+    mock_config_entry.add_to_hass(hass)
+    assert await hass.config_entries.async_setup(mock_config_entry.entry_id)
+    live = mock_config_entry.runtime_data.live
+    good_device = mock_client.async_get_device.side_effect
+
+    mock_client.async_get_device.side_effect = MyIndygoConnectionError("gateway offline")
+    for _ in range(RELAY_GRACE_FAILURES - 1):
+        await live.async_refresh()
+        assert live.last_update_success
+        assert live.data == {"pc": STATUS}
+
+    # The failure that exhausts the grace period makes the live data unavailable.
+    await live.async_refresh()
+    assert not live.last_update_success
+
+    # A success resets the counter.
+    mock_client.async_get_device.side_effect = good_device
+    await live.async_refresh()
+    assert live.last_update_success
+    mock_client.async_get_device.side_effect = MyIndygoConnectionError("gateway offline")
+    await live.async_refresh()
+    assert live.last_update_success
+    assert live.data == {"pc": STATUS}
+
+
+async def test_live_no_grace_without_previous_status(
+    hass: HomeAssistant, mock_client: AsyncMock, mock_config_entry: MockConfigEntry
+) -> None:
+    mock_client.async_get_device.side_effect = MyIndygoConnectionError("gateway offline")
+    mock_config_entry.add_to_hass(hass)
+    assert await hass.config_entries.async_setup(mock_config_entry.entry_id)
+    assert not mock_config_entry.runtime_data.live.last_update_success
