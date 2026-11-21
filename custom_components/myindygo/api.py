@@ -205,6 +205,33 @@ class MyIndygoApiClient:
         )
         return payload if isinstance(payload, dict) else {}
 
+    async def async_write_device_programs(
+        self, gateway_serial: str, child_serial: str, programs: list[dict[str, Any]]
+    ) -> Any:
+        """Write the compiled programs of a pool controller (``POST …/programs/<child id>``).
+
+        ``programs`` uses the device format: ``index``, ``name``, ``programCharacteristics``
+        (short keys) and the ``sched`` matrix. The app always sends all the programs of an LR-PC.
+        """
+        path = _relay_path(gateway_serial, "programs", child_serial)
+        return await self._async_request(
+            "POST", path, json={"programs": programs}, extra_headers=_date_header()
+        )
+
+    async def async_update_programs(self, module_id: str, programs: list[dict[str, Any]]) -> Any:
+        """Store the editable copy of the programs on the platform (``PUT /api/updatePrograms``)."""
+        return await self._async_request(
+            "PUT",
+            "/api/updatePrograms",
+            json={"module": module_id, "programmationType": 1, "programs": programs},
+        )
+
+    async def async_report_programs_sent(self, module_id: str, program_ids: list[str]) -> Any:
+        """Tell the platform that the programs were written to the device."""
+        return await self._async_request(
+            "POST", "/api/reportProgramsDatasSent", json={"module": module_id, "programs": program_ids}
+        )
+
 
 def _relay_path(gateway_serial: str, endpoint: str, child_serial: str | None) -> str:
     path = f"/api/module/{gateway_serial}/{endpoint}"

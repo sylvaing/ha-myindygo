@@ -72,7 +72,8 @@ Gardez des intervalles prudents : le cloud MyIndygo n'est pas prévu pour des in
 | Filtration, Sortie 1, Sortie 2 | marche / arrêt |
 | État de la filtration / de la sortie | arrêt, programme, marche forcée, boost, hors-gel, pause |
 | Temps restant | minutes |
-| Mode | arrêt, marche, auto |
+| Mode | arrêt, marche, auto ; aussi en sélecteur pour le changer (voir [Programmes](#programmes)) |
+| Ajustement quotidien de la filtration | Standard −4 h … +4 h, sélecteur (voir [Programmes](#programmes)) |
 | Tranche de température | tranche utilisée par le programme selon la température, par ex. `18-20 °C` |
 | Filtration prévue aujourd'hui | heures, décodées du planning du coffret |
 | Diagnostics | dernière communication, commande radio en attente, alerte d'entrée, règle et type des sorties, température du coffret (désactivée par défaut) |
@@ -123,13 +124,40 @@ data:
 
 - Le coffret **ignore sans erreur** une commande manuelle sur une sortie qui n'est pas en mode **Auto**
   (voir le capteur *mode*). L'intégration refuse alors l'action avec une erreur plutôt que de faire
-  semblant ; changez d'abord le mode dans l'application MyIndygo. Le boost n'est proposé que pour les
+  semblant ; changez d'abord le mode (sélecteur *mode*). Le boost n'est proposé que pour les
   sorties filtration et traitement, comme dans l'application.
 - Le cloud répond avant l'échange radio avec le coffret (**Commande radio en attente** est alors
   allumé). L'intégration relit l'état 10 secondes plus tard et journalise un avertissement si la
   commande n'a eu aucun effet visible.
 - Une sortie auxiliaire réglée pour forcer la filtration est commandée seule (l'application prolonge
   aussi la filtration dans ce cas) ; les pompes à vitesse variable ne sont pas prises en charge.
+
+## Programmes
+
+Deux réglages des programmes des sorties sont modifiables, comme dans l'application MyIndygo :
+
+| Entité | Options | Effet |
+|---|---|---|
+| Mode filtration, Mode sortie 1, Mode sortie 2 (sélecteur) | arrêt, marche, auto | arrêt : toujours arrêtée ; marche : toujours en marche ; auto : suit son planning |
+| Ajustement quotidien de la filtration (sélecteur, configuration) | Standard −4 h … Standard +4 h | décale heure par heure la durée de la filtration thermo-adaptative |
+
+À savoir :
+
+- Une modification est écrite comme le fait l'application : d'abord les programmes enregistrés par
+  MyIndygo, puis ceux du coffret (toutes les sorties d'un coup, à travers la passerelle), puis la
+  plateforme est informée que le coffret est à jour. Les programmes sont relus juste avant, et tout
+  réglage non modifié est renvoyé tel quel.
+- Si le coffret est injoignable, la modification reste enregistrée sur la seule plateforme MyIndygo :
+  le sélecteur continue d'afficher ce que le coffret applique réellement, et l'application MyIndygo
+  indique la modification comme non transmise (son bouton d'envoi la renvoie).
+- L'ajustement quotidien n'est disponible que pour un programme de filtration avec la règle
+  température. L'intégration calcule le planning du coffret comme l'application ; par sécurité, elle
+  refuse la modification si le planning calculé à partir des réglages actuels diffère de celui lu dans
+  le coffret.
+- Les programmes sont relus 30 secondes après une modification ; un avertissement est journalisé si le
+  coffret ne la montre pas encore.
+- Les plages horaires, les durées par tranche de température et les réglages de vitesse variable ne
+  sont pas encore modifiables.
 
 ## Fonctionnement
 

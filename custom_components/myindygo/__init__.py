@@ -22,7 +22,7 @@ from .commands import async_setup_services
 from .const import CONF_CLIENT_ID, DOMAIN, MANUFACTURER, MODEL_NAMES
 from .coordinator import MyIndygoCloudCoordinator, MyIndygoLiveCoordinator
 
-PLATFORMS: list[Platform] = [Platform.BINARY_SENSOR, Platform.SENSOR]
+PLATFORMS: list[Platform] = [Platform.BINARY_SENSOR, Platform.SELECT, Platform.SENSOR]
 
 CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 

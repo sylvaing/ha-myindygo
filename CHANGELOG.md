@@ -12,6 +12,11 @@
 - Commands on an output that is not in mode Auto are refused with an explanation, since the
   controller silently ignores them; the status is read again 10 s after a command and a warning is
   logged if it had no visible effect.
+- Program writes (#16): a select per output to change the program mode (off / on / auto), and a
+  *Filtration daily adjustment* select (Standard −4 h … +4 h) for a thermo-adaptive filtration.
+  Each change is a read-modify-write of the platform and controller programs, in the order used by
+  the app; the daily adjustment recompiles the controller schedule and is refused if the current
+  schedule cannot be reproduced exactly.
 
 ## 0.1.0 — 2026-11-21
 
