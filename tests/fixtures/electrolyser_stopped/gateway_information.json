@@ -1,0 +1,20 @@
+{
+  "bluetoothLink": true,
+  "bluetoothMacAddress": "REDACTED",
+  "cdate": "2026-11-21T17:04:03+01:00",
+  "ethernetLink": false,
+  "ethernetMacAddress": "REDACTED",
+  "hard": "68.0.0",
+  "modemLink": false,
+  "msn": "100000AAAAAA0001",
+  "mtype": "10",
+  "name": "LRMB10-AAAAAA",
+  "reset": 11,
+  "ssid": "REDACTED",
+  "up": 4843,
+  "url": "myindygo.com",
+  "vsoft": "6.3.1",
+  "web": true,
+  "wifiLink": true,
+  "wifiMacAddress": "REDACTED"
+}

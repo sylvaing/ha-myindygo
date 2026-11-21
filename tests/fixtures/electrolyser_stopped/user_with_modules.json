@@ -1,0 +1,1133 @@
+{
+  "addressLine1": "REDACTED",
+  "agency": "REDACTED",
+  "alertsPreferences": {
+    "subscriptionAlertsEmail": true
+  },
+  "apnsTokens": "REDACTED",
+  "birthday": "REDACTED",
+  "city": "REDACTED",
+  "createdAt": "2023-04-22T15:15:45.282Z",
+  "customersAlertsEmail": true,
+  "customersAlertsPush": true,
+  "email": "REDACTED",
+  "firstName": "REDACTED",
+  "gcmTokens": "REDACTED",
+  "id": "000000000000000000000001",
+  "isSubscribedToNewsletter": false,
+  "language": "fr",
+  "lastName": "REDACTED",
+  "lowBatteryEmail": true,
+  "lowBatteryPush": true,
+  "mobilePhone": null,
+  "modules": [
+    {
+      "SMSQuotaSendByDay": 30,
+      "SMSQuotaSendByMonth": 100,
+      "SMSQuotaSendByYear": 365,
+      "addressWeather": "REDACTED",
+      "backwashDuration": 0,
+      "batteryAlarm": false,
+      "batteryLow": false,
+      "batteryVoltage": null,
+      "cellularSignalQuality": 0,
+      "clockAlarm": false,
+      "createdAt": "2023-04-22T14:30:24.870Z",
+      "defaultName": "REDACTED",
+      "displayType": "lr-mb-10",
+      "firmwareUpdateFrequency": "never",
+      "hardwareVersion": "D",
+      "id": "000000000000000000000002",
+      "inputs": [],
+      "inputsUpdatedAt": "2023-04-22T13:50:14.684Z",
+      "isBoundToRelay": false,
+      "isFrostFreeEnabled": false,
+      "isOnline": true,
+      "latitude": 0,
+      "locationKey": null,
+      "longitude": 0,
+      "macAddress": "00:11:22:33:44:55",
+      "manufacturerType": "10",
+      "metadata": {
+        "isDistributionBoard": false,
+        "isEmecBoard": false,
+        "isPoolEdge": false
+      },
+      "name": "LRMB10-AAAAAA",
+      "numberOfInputs": 0,
+      "offlineAlertSent": false,
+      "outputs": [],
+      "outputsUpdatedAt": "2023-04-22T13:50:14.684Z",
+      "owner": "REDACTED",
+      "phoneNumberLock": 0,
+      "powerSourceType": 3,
+      "powerState": 0,
+      "programmationType": 0,
+      "programmingUpdatedAt": null,
+      "rssi": 3,
+      "secondaryPowerSourceType": 255,
+      "securityKey": 0,
+      "seenAt": "2026-11-21T16:03:45.097Z",
+      "sensorState": false,
+      "serialNumber": "100000AAAAAA0001",
+      "simcard": "REDACTED",
+      "softwareVersion": "6.3.1",
+      "supportTags": [
+        "pool"
+      ],
+      "type": "lr-mb-10",
+      "updatedAt": "2026-10-25T17:16:02.875Z",
+      "uuid": "REDACTED"
+    },
+    {
+      "SMSQuotaSendByDay": 30,
+      "SMSQuotaSendByMonth": 100,
+      "SMSQuotaSendByYear": 365,
+      "addressWeather": "REDACTED",
+      "backwashDuration": 0,
+      "battery": 0,
+      "batteryAlarm": false,
+      "batteryLow": false,
+      "batteryVoltage": 0,
+      "cellularSignalQuality": 0,
+      "clockAlarm": false,
+      "createdAt": "2023-04-22T14:40:42.608Z",
+      "defaultName": "REDACTED",
+      "displayType": "lr-pc",
+      "firmwareUpdateFrequency": "always",
+      "hardwareVersion": "B",
+      "id": "000000000000000000000003",
+      "inputs": [
+        {
+          "actionThreshold": {
+            "program": {
+              "betweenThresholds": {
+                "action": 0,
+                "waterBudget": 0
+              },
+              "thresholdExceeded": {
+                "action": 0,
+                "waterBudget": 0
+              },
+              "thresholdNotReached": {
+                "action": 0,
+                "waterBudget": 0
+              }
+            }
+          },
+          "createdAt": "2023-04-22T14:40:42.623Z",
+          "doNotSendActionToPermanentOff": false,
+          "expression": "x/100.0",
+          "expressionInverse": "x*100.0",
+          "hasFaultyProbe": false,
+          "highThreshold": null,
+          "id": "00000000000000000000000b",
+          "index": 1,
+          "interval": 15,
+          "isLastMeasureBeyondThresholds": false,
+          "lastHighThresholdAlertSent": null,
+          "lastLowThresholdAlertSent": null,
+          "lowThreshold": null,
+          "mailAlert": true,
+          "module": "000000000000000000000003",
+          "name": "",
+          "pushAlert": true,
+          "realyUpdated": false,
+          "realyUpdatedAt": "2023-04-22T14:40:46.811Z",
+          "sentAt": "2026-11-21T13:19:57.683Z",
+          "settings": [
+            {
+              "alert": true,
+              "highDebitThreshold": 2147483647,
+              "highDebitThresholdAction": 0,
+              "leakAlertVolume": 2147483647,
+              "lowDebitThreshold": 2147483647,
+              "lowDebitThresholdAction": 0,
+              "nominalDebit": 2147483647,
+              "settlingTimeOff": 0,
+              "settlingTimeOn": 0
+            },
+            {
+              "alert": true,
+              "highDebitThreshold": 2147483647,
+              "highDebitThresholdAction": 0,
+              "leakAlertVolume": 2147483647,
+              "lowDebitThreshold": 2147483647,
+              "lowDebitThresholdAction": 0,
+              "nominalDebit": 2147483647,
+              "settlingTimeOff": 0,
+              "settlingTimeOn": 0
+            },
+            {
+              "alert": true,
+              "highDebitThreshold": 2147483647,
+              "highDebitThresholdAction": 0,
+              "leakAlertVolume": 2147483647,
+              "lowDebitThreshold": 2147483647,
+              "lowDebitThresholdAction": 0,
+              "nominalDebit": 2147483647,
+              "settlingTimeOff": 0,
+              "settlingTimeOn": 0
+            }
+          ],
+          "subType": 0,
+          "type": 5,
+          "unit": 2,
+          "updatedAt": "2026-11-21T16:02:48.385Z"
+        },
+        {
+          "actionThreshold": {
+            "program": {
+              "betweenThresholds": {
+                "action": 0,
+                "waterBudget": 0
+              },
+              "thresholdExceeded": {
+                "action": 0,
+                "waterBudget": 0
+              },
+              "thresholdNotReached": {
+                "action": 0,
+                "waterBudget": 0
+              }
+            }
+          },
+          "createdAt": "2023-04-22T14:40:42.624Z",
+          "doNotSendActionToPermanentOff": false,
+          "expression": "x",
+          "expressionInverse": "x",
+          "hasFaultyProbe": false,
+          "highThreshold": null,
+          "id": "00000000000000000000000c",
+          "index": 2,
+          "interval": 0,
+          "isLastMeasureBeyondThresholds": false,
+          "lowThreshold": null,
+          "mailAlert": true,
+          "module": "000000000000000000000003",
+          "name": "",
+          "pushAlert": true,
+          "realyUpdated": false,
+          "sentAt": "2026-11-21T13:19:57.700Z",
+          "settings": [
+            {
+              "alert": true,
+              "highDebitThreshold": 2147483647,
+              "highDebitThresholdAction": 0,
+              "leakAlertVolume": 2147483647,
+              "lowDebitThreshold": 2147483647,
+              "lowDebitThresholdAction": 0,
+              "nominalDebit": 2147483647,
+              "settlingTimeOff": 0,
+              "settlingTimeOn": 0
+            },
+            {
+              "alert": true,
+              "highDebitThreshold": 2147483647,
+              "highDebitThresholdAction": 0,
+              "leakAlertVolume": 2147483647,
+              "lowDebitThreshold": 2147483647,
+              "lowDebitThresholdAction": 0,
+              "nominalDebit": 2147483647,
+              "settlingTimeOff": 0,
+              "settlingTimeOn": 0
+            },
+            {
+              "alert": true,
+              "highDebitThreshold": 2147483647,
+              "highDebitThresholdAction": 0,
+              "leakAlertVolume": 2147483647,
+              "lowDebitThreshold": 2147483647,
+              "lowDebitThresholdAction": 0,
+              "nominalDebit": 2147483647,
+              "settlingTimeOff": 0,
+              "settlingTimeOn": 0
+            }
+          ],
+          "subType": 0,
+          "type": 0,
+          "unit": 0,
+          "updatedAt": "2026-11-21T16:02:48.385Z"
+        }
+      ],
+      "inputsUpdatedAt": "2023-04-22T14:40:46.811Z",
+      "isBoundToRelay": false,
+      "isFrostFreeEnabled": true,
+      "isOnline": false,
+      "lastRadioCommunication": "2026-11-21T14:44:34.000Z",
+      "lastSentProgramsSnapshot": {
+        "programs": [
+          {
+            "createdAt": "2023-04-22T14:40:42.769Z",
+            "cycle": 0,
+            "dataChanged": true,
+            "id": "000000000000000000000005",
+            "index": 0,
+            "mistingTimeOff": 30,
+            "mistingTimeOn": 5,
+            "module": "000000000000000000000003",
+            "name": "",
+            "numberOfDays": 2,
+            "periodicStartDate": "2023-04-22T22:00:00.000Z",
+            "programCharacteristics": {
+              "adaptOffset": -60,
+              "auxiliaryCyclicDuration": 0,
+              "auxiliarySpeed": null,
+              "defaultProgramSpeed": null,
+              "frostFreeSpeed": null,
+              "isRandom": false,
+              "isShutterDependant": false,
+              "isUsingButton": false,
+              "microFilteringDuration": 0,
+              "microFilteringPeriod": 0,
+              "microFilteringSpeed": null,
+              "microFilteringTemperature": 127,
+              "mode": 0,
+              "onSpeed": null,
+              "programType": 4,
+              "rule": 1,
+              "speedSequence": 4368
+            },
+            "programmingType": "temporal",
+            "realyUpdatedAt": "2026-11-21T13:19:26.692Z",
+            "sentAt": "2023-04-23T19:54:46.614Z",
+            "startTimes": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1
+            ],
+            "startTimesCycles": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stationsDuration": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "synchroDay": 0,
+            "temperatureHysteresis": null,
+            "temperatureSchedules": [
+              {
+                "days": 127,
+                "id": "000000000000000000000004",
+                "indexes": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  7,
+                  9,
+                  11,
+                  14,
+                  17,
+                  21
+                ],
+                "name": "Standard",
+                "thresholds": [
+                  [
+                    {
+                      "end": 360,
+                      "start": 300
+                    },
+                    {
+                      "end": 1380,
+                      "start": 1320
+                    }
+                  ],
+                  [
+                    {
+                      "end": 900,
+                      "start": 720
+                    }
+                  ],
+                  [
+                    {
+                      "end": 960,
+                      "start": 720
+                    }
+                  ],
+                  [
+                    {
+                      "end": 960,
+                      "start": 660
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1020,
+                      "start": 660
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1080,
+                      "start": 660
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1080,
+                      "start": 600
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1140,
+                      "start": 600
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1200,
+                      "start": 600
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1200,
+                      "start": 540
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1260,
+                      "start": 540
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1320,
+                      "start": 540
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1320,
+                      "start": 480
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1380,
+                      "start": 480
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 480
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 420
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 360
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 300
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 240
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 180
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 120
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 60
+                    }
+                  ]
+                ]
+              }
+            ],
+            "temperatureThresholdActive": null,
+            "temperatureThresholdInactive": null,
+            "template": false,
+            "timeBetweenStations": 0,
+            "updatedAt": "2026-11-21T13:19:26.740Z",
+            "variableSpeedWindows": [],
+            "waterBudget": 100,
+            "weekDays": 127,
+            "windows": []
+          },
+          {
+            "createdAt": "2023-04-22T14:40:42.874Z",
+            "cycle": 0,
+            "dataChanged": true,
+            "id": "000000000000000000000006",
+            "index": 1,
+            "mistingTimeOff": 30,
+            "mistingTimeOn": 5,
+            "module": "000000000000000000000003",
+            "name": "",
+            "numberOfDays": 2,
+            "periodicStartDate": "2023-04-22T22:00:00.000Z",
+            "programCharacteristics": {
+              "auxiliaryCyclicDuration": 300,
+              "auxiliarySpeed": null,
+              "defaultProgramSpeed": null,
+              "frostFreeSpeed": null,
+              "isRandom": false,
+              "isShutterDependant": false,
+              "isUsingButton": false,
+              "microFilteringDuration": null,
+              "microFilteringPeriod": null,
+              "microFilteringSpeed": null,
+              "microFilteringTemperature": null,
+              "mode": 0,
+              "onSpeed": null,
+              "programType": 2,
+              "rule": 0,
+              "speedSequence": null
+            },
+            "programmingType": "temporal",
+            "realyUpdatedAt": "2026-11-21T08:38:26.976Z",
+            "sentAt": "2023-04-23T19:54:46.614Z",
+            "startTimes": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1
+            ],
+            "startTimesCycles": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stationsDuration": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "synchroDay": 0,
+            "temperatureHysteresis": null,
+            "temperatureSchedules": [],
+            "temperatureThresholdActive": null,
+            "temperatureThresholdInactive": null,
+            "template": false,
+            "timeBetweenStations": 0,
+            "updatedAt": "2026-11-21T13:19:26.793Z",
+            "variableSpeedWindows": [],
+            "waterBudget": 100,
+            "weekDays": 127,
+            "windows": []
+          },
+          {
+            "createdAt": "2023-04-22T14:40:42.904Z",
+            "cycle": 0,
+            "dataChanged": true,
+            "id": "000000000000000000000007",
+            "index": 2,
+            "mistingTimeOff": 30,
+            "mistingTimeOn": 5,
+            "module": "000000000000000000000003",
+            "name": "",
+            "numberOfDays": 2,
+            "periodicStartDate": "2023-04-22T22:00:00.000Z",
+            "programCharacteristics": {
+              "auxiliaryCyclicDuration": 300,
+              "auxiliarySpeed": null,
+              "defaultProgramSpeed": null,
+              "frostFreeSpeed": null,
+              "isRandom": false,
+              "isShutterDependant": false,
+              "isUsingButton": false,
+              "microFilteringDuration": null,
+              "microFilteringPeriod": null,
+              "microFilteringSpeed": null,
+              "microFilteringTemperature": null,
+              "mode": 0,
+              "onSpeed": null,
+              "programType": 2,
+              "rule": 0,
+              "speedSequence": null
+            },
+            "programmingType": "temporal",
+            "realyUpdatedAt": "2026-11-21T08:38:27.567Z",
+            "sentAt": "2023-04-23T19:54:46.614Z",
+            "startTimes": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1
+            ],
+            "startTimesCycles": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stationsDuration": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "synchroDay": 0,
+            "temperatureHysteresis": null,
+            "temperatureSchedules": [],
+            "temperatureThresholdActive": null,
+            "temperatureThresholdInactive": null,
+            "template": false,
+            "timeBetweenStations": 0,
+            "updatedAt": "2026-11-21T13:19:26.842Z",
+            "variableSpeedWindows": [],
+            "waterBudget": 100,
+            "weekDays": 127,
+            "windows": []
+          }
+        ],
+        "snapshotAt": "2026-11-21T13:19:45.582Z",
+        "snapshotBy": "REDACTED"
+      },
+      "latitude": 0,
+      "locationKey": "REDACTED",
+      "longitude": 0,
+      "macAddress": "00:11:22:33:44:55",
+      "manufacturerType": "15",
+      "metadata": {
+        "isDistributionBoard": false,
+        "isEmecBoard": false,
+        "isLRPower": false,
+        "isPoolEdge": false,
+        "isPoolLevelSensor": false,
+        "isPoolPower": false,
+        "isVistapool": false,
+        "patches": [
+          {
+            "done": true,
+            "number": "202504231400",
+            "sendConfigurationStatus": "success",
+            "softwareVersionBeforePatch": "7.0.2",
+            "type": "forceModuleConfiguration"
+          },
+          {
+            "done": true,
+            "number": "202505021400",
+            "sendConfigurationStatus": "success",
+            "softwareVersionBeforePatch": "7.0.2",
+            "type": "forceModuleConfiguration"
+          }
+        ]
+      },
+      "name": "LRPC-BBBBBB",
+      "numberOfInputs": 2,
+      "outputs": [
+        {
+          "createdAt": "2023-04-22T14:40:42.627Z",
+          "id": "000000000000000000000008",
+          "index": 0,
+          "module": "000000000000000000000003",
+          "name": "Station 1",
+          "updatedAt": "2023-04-22T15:28:49.243Z",
+          "useSensor": true
+        },
+        {
+          "createdAt": "2023-04-22T14:40:42.628Z",
+          "id": "000000000000000000000009",
+          "index": 1,
+          "module": "000000000000000000000003",
+          "name": "Station 2",
+          "updatedAt": "2023-04-22T15:28:49.244Z",
+          "useSensor": true
+        },
+        {
+          "createdAt": "2023-04-22T14:40:42.629Z",
+          "id": "00000000000000000000000a",
+          "index": 2,
+          "module": "000000000000000000000003",
+          "name": "Station 3",
+          "updatedAt": "2023-04-22T15:28:49.245Z",
+          "useSensor": true
+        }
+      ],
+      "outputsUpdatedAt": "2023-04-22T12:52:34.096Z",
+      "owner": "REDACTED",
+      "phoneNumberLock": 0,
+      "powerMode": 255,
+      "powerSourceType": 10,
+      "powerState": 0,
+      "programmationType": 0,
+      "programmingSentAt": "2026-11-21T13:19:57.698Z",
+      "programmingUpdatedAt": "2026-11-21T13:19:45.654Z",
+      "realyUpdatedAt": "2023-04-22T14:40:51.445Z",
+      "relay": "000000000000000000000002",
+      "rssi": 0,
+      "secondaryBatteryVoltage": 80,
+      "secondaryPowerMode": 255,
+      "secondaryPowerSourceType": 255,
+      "secondaryPowerState": 0,
+      "securityKey": 0,
+      "sensorState": false,
+      "sentAt": "2026-11-21T13:19:57.610Z",
+      "serialNumber": "150302BBBBBB0001",
+      "simcard": "REDACTED",
+      "softwareVersion": "7.0.9",
+      "status": {
+        "dialogTimeStamp": "2026-11-21T14:44:34.000Z",
+        "radio": [
+          "cfg",
+          "pgm",
+          "thr",
+          "cmn",
+          "id"
+        ],
+        "relayIsLongPolling": true
+      },
+      "statusReallyUpdatedAt": "2026-11-21T14:44:34.871Z",
+      "statusUpdatedAt": "2026-11-21T14:44:34.871Z",
+      "type": "lr-pc",
+      "updatedAt": "2026-11-21T14:44:34.915Z",
+      "uuid": "REDACTED",
+      "waitingForStatusUpdate": false
+    },
+    {
+      "SMSQuotaSendByDay": 30,
+      "SMSQuotaSendByMonth": 100,
+      "SMSQuotaSendByYear": 365,
+      "address": "REDACTED",
+      "addressWeather": "REDACTED",
+      "backwashDuration": 0,
+      "batteryAlarm": false,
+      "batteryLow": false,
+      "batteryVoltage": null,
+      "cellularSignalQuality": 0,
+      "clockAlarm": false,
+      "country": "REDACTED",
+      "createdAt": "2026-06-21T08:46:58.197Z",
+      "defaultName": "REDACTED",
+      "displayType": "ipx",
+      "firmwareUpdateFrequency": "always",
+      "hardwareVersion": "0",
+      "id": "000000000000000000000010",
+      "inputs": [
+        {
+          "actionThreshold": {
+            "program": {
+              "betweenThresholds": {
+                "action": 0,
+                "waterBudget": 0
+              },
+              "thresholdExceeded": {
+                "action": 0,
+                "waterBudget": 0
+              },
+              "thresholdNotReached": {
+                "action": 0,
+                "waterBudget": 0
+              }
+            }
+          },
+          "actions": [
+            {
+              "duration": 0,
+              "off": 0,
+              "on": 0,
+              "outputs": 0,
+              "schedule": 0,
+              "type": 0
+            },
+            {
+              "duration": 0,
+              "off": 0,
+              "on": 0,
+              "outputs": 0,
+              "schedule": 0,
+              "type": 0
+            }
+          ],
+          "channel": null,
+          "createdAt": "2026-06-21T08:46:58.270Z",
+          "doNotSendActionToPermanentOff": false,
+          "expression": "x/100.0",
+          "expressionInverse": "x*100.0",
+          "hasFaultyProbe": false,
+          "highThreshold": null,
+          "id": "00000000000000000000000d",
+          "index": 1,
+          "interval": 30,
+          "ipxData": {},
+          "isLastMeasureBeyondThresholds": false,
+          "lastHighThresholdAlertSent": null,
+          "lastLowThresholdAlertSent": null,
+          "lastValue": {
+            "date": "2026-11-21T02:55:50.000Z",
+            "value": 1.6
+          },
+          "lowThreshold": null,
+          "mailAlert": true,
+          "metadata": {
+            "phRegulation": "undefined"
+          },
+          "module": "000000000000000000000010",
+          "name": "",
+          "nbTicksToTriggerAlerts": 1,
+          "pendingIpxData": {},
+          "pushAlert": true,
+          "realyUpdated": false,
+          "realyUpdatedAt": "2026-06-21T08:48:41.174Z",
+          "sentAt": "2026-06-21T08:48:43.958Z",
+          "settings": [
+            {
+              "alert": true,
+              "highDebitThreshold": 2147483647,
+              "highDebitThresholdAction": 0,
+              "leakAlertVolume": 2147483647,
+              "lowDebitThreshold": 2147483647,
+              "lowDebitThresholdAction": 0,
+              "nominalDebit": 2147483647,
+              "settlingTimeOff": 0,
+              "settlingTimeOn": 0,
+              "shouldForcePushData": false
+            },
+            {
+              "alert": true,
+              "highDebitThreshold": 2147483647,
+              "highDebitThresholdAction": 0,
+              "leakAlertVolume": 2147483647,
+              "lowDebitThreshold": 2147483647,
+              "lowDebitThresholdAction": 0,
+              "nominalDebit": 2147483647,
+              "settlingTimeOff": 0,
+              "settlingTimeOn": 0,
+              "shouldForcePushData": false
+            }
+          ],
+          "subType": 0,
+          "type": 6,
+          "unit": 4,
+          "updatedAt": "2026-11-21T08:43:49.914Z"
+        },
+        {
+          "actionThreshold": {
+            "program": {
+              "betweenThresholds": {
+                "action": 0,
+                "waterBudget": 0
+              },
+              "thresholdExceeded": {
+                "action": 0,
+                "waterBudget": 0
+              },
+              "thresholdNotReached": {
+                "action": 0,
+                "waterBudget": 0
+              }
+            }
+          },
+          "actions": [
+            {
+              "duration": 0,
+              "off": 0,
+              "on": 0,
+              "outputs": 0,
+              "schedule": 0,
+              "type": 0
+            },
+            {
+              "duration": 0,
+              "off": 0,
+              "on": 0,
+              "outputs": 0,
+              "schedule": 0,
+              "type": 0
+            }
+          ],
+          "channel": null,
+          "createdAt": "2026-06-21T08:46:58.271Z",
+          "doNotSendActionToPermanentOff": false,
+          "expression": "x",
+          "expressionInverse": "x",
+          "hasFaultyProbe": false,
+          "highThreshold": null,
+          "id": "00000000000000000000000e",
+          "index": 2,
+          "interval": 0,
+          "ipxData": {},
+          "isLastMeasureBeyondThresholds": false,
+          "lowThreshold": null,
+          "mailAlert": true,
+          "metadata": {
+            "phRegulation": "undefined"
+          },
+          "module": "000000000000000000000010",
+          "name": "",
+          "nbTicksToTriggerAlerts": 1,
+          "pendingIpxData": {},
+          "pushAlert": true,
+          "realyUpdated": false,
+          "sentAt": "2026-06-21T08:48:43.982Z",
+          "settings": [
+            {
+              "alert": true,
+              "highDebitThreshold": 2147483647,
+              "highDebitThresholdAction": 0,
+              "leakAlertVolume": 2147483647,
+              "lowDebitThreshold": 2147483647,
+              "lowDebitThresholdAction": 0,
+              "nominalDebit": 2147483647,
+              "settlingTimeOff": 0,
+              "settlingTimeOn": 0,
+              "shouldForcePushData": false
+            },
+            {
+              "alert": true,
+              "highDebitThreshold": 2147483647,
+              "highDebitThresholdAction": 0,
+              "leakAlertVolume": 2147483647,
+              "lowDebitThreshold": 2147483647,
+              "lowDebitThresholdAction": 0,
+              "nominalDebit": 2147483647,
+              "settlingTimeOff": 0,
+              "settlingTimeOn": 0,
+              "shouldForcePushData": false
+            }
+          ],
+          "subType": 0,
+          "type": 0,
+          "unit": 0,
+          "updatedAt": "2026-11-21T08:43:49.913Z"
+        }
+      ],
+      "inputsUpdatedAt": "2026-06-21T07:58:18.711Z",
+      "ipxData": {
+        "acknowledgedAlarms": "0000000000000000",
+        "cellVoltage": 159,
+        "configurationChanged": {
+          "00000000000000000000000d": "2026-06-21T08:48:41.120Z",
+          "00000000000000000000000e": "2026-06-21T08:48:41.120Z"
+        },
+        "configurationCode": "24211363",
+        "deviceState": {
+          "boostEnabled": false,
+          "canPhEntry": false,
+          "cellPolaruty": false,
+          "cmdEntry": false,
+          "flowEntry": false,
+          "pHInjection": false,
+          "prodStatus": false,
+          "shutterEntry": false,
+          "testProd": false
+        },
+        "model": 4,
+        "receiveEmailAlerts": {
+          "4": false,
+          "6": false
+        },
+        "receiveMobileAlerts": {
+          "4": false,
+          "6": false
+        },
+        "remainingTimeElectrolyseDurationInPercent": 0,
+        "serialNumber": "REDACTED",
+        "softCommandCard": "3.3",
+        "tagProtocolVersion": 6,
+        "totalElectrolyseDuration": 2379,
+        "totalElectrolyseDurationCurrent": {
+          "date": "2026-11-21T02:56:58.772Z",
+          "value": 2379
+        },
+        "totalElectrolyseDurationTheDayBefore": {
+          "date": "2026-11-20T04:29:53.826Z",
+          "value": 2371
+        }
+      },
+      "ipxRelay": "000000000000000000000003",
+      "isBoundToRelay": false,
+      "isFrostFreeEnabled": false,
+      "isOnline": false,
+      "lastIpxCommunication": "2026-11-21T02:55:50.000Z",
+      "latitude": 0,
+      "locationKey": null,
+      "longitude": 0,
+      "macAddress": "00:11:22:33:44:55",
+      "manufacturer": "00000000000000000000000f",
+      "manufacturerType": "FD",
+      "metadata": {
+        "brand": "Pool Technologie",
+        "isDistributionBoard": false,
+        "isEmecBoard": false,
+        "isFloodSensor": false,
+        "isLRPower": false,
+        "isPoolEdge": false,
+        "isPoolLevelSensor": false,
+        "isPoolPower": false,
+        "isVistapool": false
+      },
+      "monthlyWaterBudgets": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "name": "IPX-CCCCCC",
+      "numberOfInputs": 2,
+      "outputs": [
+        {
+          "createdAt": "2026-06-21T08:46:58.320Z",
+          "dataChanged": true,
+          "id": "000000000000000000000011",
+          "index": 0,
+          "ipxData": {
+            "cellVoltage": 159,
+            "isWintered": false,
+            "pHMode": 0,
+            "pHSetpoint": 7.2,
+            "stateAlarms": [],
+            "type": 1
+          },
+          "module": "000000000000000000000010",
+          "name": "Station 1",
+          "pendingIpxData": {},
+          "realyUpdatedAt": "2026-11-21T08:43:47.056Z",
+          "updatedAt": "2026-11-21T08:43:49.929Z",
+          "useSensor": true,
+          "waterBudget": 100
+        },
+        {
+          "createdAt": "2026-06-21T08:46:58.322Z",
+          "dataChanged": true,
+          "id": "000000000000000000000012",
+          "index": 1,
+          "ipxData": {
+            "boostEnabled": false,
+            "boostRemainingTime": 0,
+            "electrolysisRatioPercentageSetpoint": 0,
+            "electrolyzerMode": 0,
+            "isWintered": false,
+            "percentageSetpoint": 10,
+            "prodTestResult": 0,
+            "saltValue": 3.4,
+            "stateAlarms": [],
+            "totalElectrolyseDuration": 2379,
+            "type": 4,
+            "uvRatioPercentageSetpoint": 0
+          },
+          "module": "000000000000000000000010",
+          "name": "Station 2",
+          "pendingIpxData": {},
+          "realyUpdatedAt": "2026-11-21T08:43:37.446Z",
+          "updatedAt": "2026-11-21T08:43:49.931Z",
+          "useSensor": true,
+          "waterBudget": 100
+        }
+      ],
+      "outputsUpdatedAt": "2026-11-21T08:43:47.056Z",
+      "owner": "REDACTED",
+      "phoneNumberLock": 0,
+      "powerMode": 255,
+      "powerSourceType": 10,
+      "powerState": 0,
+      "programmationType": 0,
+      "programmingUpdatedAt": null,
+      "realyUpdatedAt": "2026-11-21T08:43:47.096Z",
+      "secondaryPowerSourceType": 255,
+      "securityKey": 0,
+      "sensorState": false,
+      "sentAt": "2026-11-21T08:43:46.916Z",
+      "serialNumber": "FD00010000000000CCCCCC0001",
+      "simcard": "REDACTED",
+      "softwareVersion": "3.3",
+      "synchroQuotaSendByDay": 30,
+      "synchroQuotaSendByMonth": 100,
+      "synchroQuotaSendByYear": 365,
+      "type": "ipx",
+      "typeIpx": 1,
+      "updatedAt": "2026-11-21T08:43:49.957Z",
+      "uuid": "REDACTED"
+    }
+  ],
+  "otherPhone": null,
+  "passwordStrengthLevel": 2,
+  "postalCode": "REDACTED",
+  "updatedAt": "2026-11-21T08:38:35.197Z",
+  "userGroups": "REDACTED"
+}

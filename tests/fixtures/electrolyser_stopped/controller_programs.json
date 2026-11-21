@@ -1,0 +1,405 @@
+{
+  "programmingSentAt": "2026-11-21T13:19:57.698Z",
+  "programmingUpdatedAt": "2026-11-21T13:19:45.654Z",
+  "programs": [
+    {
+      "createdAt": "2023-04-22T14:40:42.769Z",
+      "cycle": 0,
+      "dataChanged": true,
+      "id": "000000000000000000000005",
+      "index": 0,
+      "mistingTimeOff": 30,
+      "mistingTimeOn": 5,
+      "module": "000000000000000000000003",
+      "name": "",
+      "numberOfDays": 2,
+      "periodicStartDate": "2023-04-22T22:00:00.000Z",
+      "programCharacteristics": {
+        "adaptOffset": -60,
+        "auxiliaryCyclicDuration": 0,
+        "auxiliarySpeed": null,
+        "defaultProgramSpeed": null,
+        "frostFreeSpeed": null,
+        "isRandom": false,
+        "isShutterDependant": false,
+        "isUsingButton": false,
+        "microFilteringDuration": 0,
+        "microFilteringPeriod": 0,
+        "microFilteringSpeed": null,
+        "microFilteringTemperature": 127,
+        "mode": 1,
+        "onSpeed": null,
+        "programType": 4,
+        "rule": 1,
+        "speedSequence": 4368
+      },
+      "programmingType": "temporal",
+      "realyUpdatedAt": "2026-11-21T13:19:45.654Z",
+      "sentAt": "2023-04-23T19:54:46.614Z",
+      "startTimes": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "startTimesCycles": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stationsDuration": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "synchroDay": 0,
+      "temperatureHysteresis": null,
+      "temperatureSchedules": [
+        {
+          "days": 127,
+          "id": "000000000000000000000004",
+          "indexes": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            9,
+            11,
+            14,
+            17,
+            21
+          ],
+          "name": "Standard",
+          "thresholds": [
+            [
+              {
+                "end": 360,
+                "start": 300
+              },
+              {
+                "end": 1380,
+                "start": 1320
+              }
+            ],
+            [
+              {
+                "end": 900,
+                "start": 720
+              }
+            ],
+            [
+              {
+                "end": 960,
+                "start": 720
+              }
+            ],
+            [
+              {
+                "end": 960,
+                "start": 660
+              }
+            ],
+            [
+              {
+                "end": 1020,
+                "start": 660
+              }
+            ],
+            [
+              {
+                "end": 1080,
+                "start": 660
+              }
+            ],
+            [
+              {
+                "end": 1080,
+                "start": 600
+              }
+            ],
+            [
+              {
+                "end": 1140,
+                "start": 600
+              }
+            ],
+            [
+              {
+                "end": 1200,
+                "start": 600
+              }
+            ],
+            [
+              {
+                "end": 1200,
+                "start": 540
+              }
+            ],
+            [
+              {
+                "end": 1260,
+                "start": 540
+              }
+            ],
+            [
+              {
+                "end": 1320,
+                "start": 540
+              }
+            ],
+            [
+              {
+                "end": 1320,
+                "start": 480
+              }
+            ],
+            [
+              {
+                "end": 1380,
+                "start": 480
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 480
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 420
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 360
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 300
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 240
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 180
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 120
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 60
+              }
+            ]
+          ]
+        }
+      ],
+      "temperatureThresholdActive": null,
+      "temperatureThresholdInactive": null,
+      "template": false,
+      "timeBetweenStations": 0,
+      "updatedAt": "2026-11-21T13:19:45.701Z",
+      "variableSpeedWindows": [],
+      "waterBudget": 100,
+      "weekDays": 127,
+      "windows": []
+    },
+    {
+      "createdAt": "2023-04-22T14:40:42.874Z",
+      "cycle": 0,
+      "dataChanged": true,
+      "id": "000000000000000000000006",
+      "index": 1,
+      "mistingTimeOff": 30,
+      "mistingTimeOn": 5,
+      "module": "000000000000000000000003",
+      "name": "",
+      "numberOfDays": 2,
+      "periodicStartDate": "2023-04-22T22:00:00.000Z",
+      "programCharacteristics": {
+        "auxiliaryCyclicDuration": 300,
+        "auxiliarySpeed": null,
+        "defaultProgramSpeed": null,
+        "frostFreeSpeed": null,
+        "isRandom": false,
+        "isShutterDependant": false,
+        "isUsingButton": false,
+        "microFilteringDuration": null,
+        "microFilteringPeriod": null,
+        "microFilteringSpeed": null,
+        "microFilteringTemperature": null,
+        "mode": 0,
+        "onSpeed": null,
+        "programType": 2,
+        "rule": 0,
+        "speedSequence": null
+      },
+      "programmingType": "temporal",
+      "realyUpdatedAt": "2026-11-21T08:38:26.976Z",
+      "sentAt": "2023-04-23T19:54:46.614Z",
+      "startTimes": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "startTimesCycles": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stationsDuration": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "synchroDay": 0,
+      "temperatureHysteresis": null,
+      "temperatureSchedules": [],
+      "temperatureThresholdActive": null,
+      "temperatureThresholdInactive": null,
+      "template": false,
+      "timeBetweenStations": 0,
+      "updatedAt": "2026-11-21T13:19:45.748Z",
+      "variableSpeedWindows": [],
+      "waterBudget": 100,
+      "weekDays": 127,
+      "windows": []
+    },
+    {
+      "createdAt": "2023-04-22T14:40:42.904Z",
+      "cycle": 0,
+      "dataChanged": true,
+      "id": "000000000000000000000007",
+      "index": 2,
+      "mistingTimeOff": 30,
+      "mistingTimeOn": 5,
+      "module": "000000000000000000000003",
+      "name": "",
+      "numberOfDays": 2,
+      "periodicStartDate": "2023-04-22T22:00:00.000Z",
+      "programCharacteristics": {
+        "auxiliaryCyclicDuration": 300,
+        "auxiliarySpeed": null,
+        "defaultProgramSpeed": null,
+        "frostFreeSpeed": null,
+        "isRandom": false,
+        "isShutterDependant": false,
+        "isUsingButton": false,
+        "microFilteringDuration": null,
+        "microFilteringPeriod": null,
+        "microFilteringSpeed": null,
+        "microFilteringTemperature": null,
+        "mode": 0,
+        "onSpeed": null,
+        "programType": 2,
+        "rule": 0,
+        "speedSequence": null
+      },
+      "programmingType": "temporal",
+      "realyUpdatedAt": "2026-11-21T08:38:27.567Z",
+      "sentAt": "2023-04-23T19:54:46.614Z",
+      "startTimes": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "startTimesCycles": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stationsDuration": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "synchroDay": 0,
+      "temperatureHysteresis": null,
+      "temperatureSchedules": [],
+      "temperatureThresholdActive": null,
+      "temperatureThresholdInactive": null,
+      "template": false,
+      "timeBetweenStations": 0,
+      "updatedAt": "2026-11-21T13:19:45.822Z",
+      "variableSpeedWindows": [],
+      "waterBudget": 100,
+      "weekDays": 127,
+      "windows": []
+    }
+  ]
+}

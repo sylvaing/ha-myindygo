@@ -1,0 +1,505 @@
+{
+  "programmingSentAt": "2026-10-29T09:32:40.052Z",
+  "programmingUpdatedAt": "2026-10-29T09:32:34.923Z",
+  "programs": [
+    {
+      "createdAt": "2023-04-22T14:40:42.769Z",
+      "cycle": 0,
+      "dataChanged": true,
+      "id": "000000000000000000000005",
+      "index": 0,
+      "mistingTimeOff": 30,
+      "mistingTimeOn": 5,
+      "module": "000000000000000000000003",
+      "name": "",
+      "numberOfDays": 2,
+      "periodicStartDate": "2023-04-22T22:00:00.000Z",
+      "programCharacteristics": {
+        "adaptOffset": -60,
+        "auxiliaryCyclicDuration": 0,
+        "isRandom": false,
+        "isShutterDependant": false,
+        "isUsingButton": false,
+        "microFilteringDuration": 10,
+        "microFilteringPeriod": 480,
+        "microFilteringTemperature": 5,
+        "mode": 2,
+        "programType": 4,
+        "rule": 1,
+        "speedSequence": 4368
+      },
+      "programmingType": "temporal",
+      "realyUpdatedAt": "2026-10-29T09:32:34.583Z",
+      "sentAt": "2023-04-23T19:54:46.614Z",
+      "startTimes": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "startTimesCycles": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stationsDuration": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "synchroDay": 0,
+      "temperatureHysteresis": null,
+      "temperatureSchedules": [
+        {
+          "days": 127,
+          "id": "000000000000000000000004",
+          "indexes": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            9,
+            11,
+            14,
+            17,
+            21
+          ],
+          "name": "Standard",
+          "thresholds": [
+            [
+              {
+                "end": 360,
+                "start": 300
+              },
+              {
+                "end": 1380,
+                "start": 1320
+              }
+            ],
+            [
+              {
+                "end": 900,
+                "start": 720
+              }
+            ],
+            [
+              {
+                "end": 960,
+                "start": 720
+              }
+            ],
+            [
+              {
+                "end": 960,
+                "start": 660
+              }
+            ],
+            [
+              {
+                "end": 1020,
+                "start": 660
+              }
+            ],
+            [
+              {
+                "end": 1080,
+                "start": 660
+              }
+            ],
+            [
+              {
+                "end": 1080,
+                "start": 600
+              }
+            ],
+            [
+              {
+                "end": 1140,
+                "start": 600
+              }
+            ],
+            [
+              {
+                "end": 1200,
+                "start": 600
+              }
+            ],
+            [
+              {
+                "end": 1200,
+                "start": 540
+              }
+            ],
+            [
+              {
+                "end": 1260,
+                "start": 540
+              }
+            ],
+            [
+              {
+                "end": 1320,
+                "start": 540
+              }
+            ],
+            [
+              {
+                "end": 1320,
+                "start": 480
+              }
+            ],
+            [
+              {
+                "end": 1380,
+                "start": 480
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 480
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 420
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 360
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 300
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 240
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 180
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 120
+              }
+            ],
+            [
+              {
+                "end": 1440,
+                "start": 60
+              }
+            ]
+          ]
+        }
+      ],
+      "temperatureThresholdActive": null,
+      "temperatureThresholdInactive": null,
+      "template": false,
+      "timeBetweenStations": 0,
+      "updatedAt": "2026-10-29T09:32:34.669Z",
+      "variableSpeedWindows": [],
+      "waterBudget": 100,
+      "weekDays": 127,
+      "windows": [
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        }
+      ]
+    },
+    {
+      "createdAt": "2023-04-22T14:40:42.874Z",
+      "cycle": 0,
+      "dataChanged": true,
+      "id": "000000000000000000000006",
+      "index": 1,
+      "mistingTimeOff": 30,
+      "mistingTimeOn": 5,
+      "module": "000000000000000000000003",
+      "name": "",
+      "numberOfDays": 2,
+      "periodicStartDate": "2023-04-22T22:00:00.000Z",
+      "programCharacteristics": {
+        "auxiliaryCyclicDuration": 300,
+        "isRandom": false,
+        "isShutterDependant": false,
+        "isUsingButton": false,
+        "mode": 0,
+        "programType": 2,
+        "rule": 0
+      },
+      "programmingType": "temporal",
+      "realyUpdatedAt": "2026-10-29T09:32:34.761Z",
+      "sentAt": "2023-04-23T19:54:46.614Z",
+      "startTimes": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "startTimesCycles": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stationsDuration": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "synchroDay": 0,
+      "temperatureHysteresis": null,
+      "temperatureSchedules": [],
+      "temperatureThresholdActive": null,
+      "temperatureThresholdInactive": null,
+      "template": false,
+      "timeBetweenStations": 0,
+      "updatedAt": "2026-10-29T09:32:34.855Z",
+      "variableSpeedWindows": [],
+      "waterBudget": 100,
+      "weekDays": 127,
+      "windows": [
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        }
+      ]
+    },
+    {
+      "createdAt": "2023-04-22T14:40:42.904Z",
+      "cycle": 0,
+      "dataChanged": true,
+      "id": "000000000000000000000007",
+      "index": 2,
+      "mistingTimeOff": 30,
+      "mistingTimeOn": 5,
+      "module": "000000000000000000000003",
+      "name": "",
+      "numberOfDays": 2,
+      "periodicStartDate": "2023-04-22T22:00:00.000Z",
+      "programCharacteristics": {
+        "auxiliaryCyclicDuration": 300,
+        "isRandom": false,
+        "isShutterDependant": false,
+        "isUsingButton": false,
+        "mode": 0,
+        "programType": 2,
+        "rule": 0
+      },
+      "programmingType": "temporal",
+      "realyUpdatedAt": "2026-10-29T09:32:34.923Z",
+      "sentAt": "2023-04-23T19:54:46.614Z",
+      "startTimes": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "startTimesCycles": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stationsDuration": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "synchroDay": 0,
+      "temperatureHysteresis": null,
+      "temperatureSchedules": [],
+      "temperatureThresholdActive": null,
+      "temperatureThresholdInactive": null,
+      "template": false,
+      "timeBetweenStations": 0,
+      "updatedAt": "2026-10-29T09:32:34.955Z",
+      "variableSpeedWindows": [],
+      "waterBudget": 100,
+      "weekDays": 127,
+      "windows": [
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        },
+        {
+          "end": -1,
+          "runningDays": 0,
+          "start": -1
+        }
+      ]
+    }
+  ]
+}
