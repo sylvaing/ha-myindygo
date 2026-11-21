@@ -1,0 +1,68 @@
+[
+  {
+    "address": "REDACTED",
+    "addressWeather": "REDACTED",
+    "adjustmentMeasure": 715,
+    "adminUsers": "REDACTED",
+    "backwashReminder": {
+      "automaticBackwash": false,
+      "frequency": 15,
+      "lastReminderDate": "2026-11-07T09:00:00.030Z"
+    },
+    "chlorineRegulationMode": "manual",
+    "coverType": "shed",
+    "createdAt": "2023-04-22T15:16:33.877Z",
+    "customPhoto": "REDACTED",
+    "cyanuricAcidRate": null,
+    "depth": 1.4,
+    "electrolyserModel": "undefined",
+    "filteringType": "filterGlass",
+    "floorShape": "slopped",
+    "heatPumpCategory": "undefined",
+    "heatingSystemType": "shed",
+    "id": "000000000000000000000013",
+    "installationType": "outdoor",
+    "latitude": 0,
+    "length": 6.5,
+    "locationKey": "REDACTED",
+    "longitude": 0,
+    "model": "",
+    "moduleTypesLinked": [
+      "lr-mb-10",
+      "lr-pc",
+      "ipx"
+    ],
+    "notifications": {
+      "000000000000000000000013-backwashReminder": {
+        "action": "backwashReminder",
+        "date": "2026-11-07T10:00:00+01:00",
+        "poolIdentifier": "000000000000000000000013"
+      }
+    },
+    "owner": "REDACTED",
+    "pHRegulationType": "undefined",
+    "phRegulationMode": "automatic",
+    "preventWaterChemistryCorrectionProtocolTriggering": "2023-04-22T16:16:33.877Z",
+    "pumpDebit": null,
+    "pumpModel": "undefined",
+    "shape": "rectangular",
+    "status": {
+      "lastPhMeasure": {
+        "date": 1795229750,
+        "value": 1.6
+      },
+      "lastTemperatureMeasure": {
+        "date": 1795276860,
+        "value": 17.57
+      },
+      "overtakingThreshold": "1",
+      "poolWithoutModules": false,
+      "state": true
+    },
+    "updatedAt": "2026-11-21T16:02:48.049Z",
+    "volume": 32,
+    "waterTreatmentType": "electrolysis",
+    "width": 3.5,
+    "xRef": 0
+  }
+]

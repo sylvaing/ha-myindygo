@@ -1,0 +1,1312 @@
+{
+  "address": "REDACTED",
+  "addressWeather": "REDACTED",
+  "adjustmentMeasure": 715,
+  "adminUsers": "REDACTED",
+  "averageChlorineRate": null,
+  "averageTemperature": 17.73,
+  "backwashReminder": {
+    "automaticBackwash": false,
+    "frequency": 15,
+    "lastReminderDate": "2026-11-07T09:00:00.030Z"
+  },
+  "cansLevel": {
+    "timestamp": null,
+    "value": null
+  },
+  "chlorineRegulationMode": "manual",
+  "coverType": "shed",
+  "createdAt": "2023-04-22T15:16:33.877Z",
+  "customPhoto": "REDACTED",
+  "cyanuricAcidRate": null,
+  "depth": 1.4,
+  "electrolyserModel": "undefined",
+  "energyMeter": null,
+  "exportedEnergyMeter": null,
+  "filteringType": "filterGlass",
+  "filtrationTemperature": 18.85,
+  "floodState": null,
+  "floorShape": "slopped",
+  "heatPumpCategory": "undefined",
+  "heatingSystemType": "shed",
+  "id": "000000000000000000000013",
+  "installationType": "outdoor",
+  "lastFillingVolume": {
+    "date": null,
+    "value": null
+  },
+  "latitude": 0,
+  "length": 6.5,
+  "limited": false,
+  "locationKey": "REDACTED",
+  "longitude": 0,
+  "maxTemperatureTheDayBefore": 18.85,
+  "model": "",
+  "moduleTypesLinked": [
+    "lr-mb-10",
+    "lr-pc",
+    "ipx"
+  ],
+  "modules": [
+    {
+      "SMSQuotaSendByDay": 30,
+      "SMSQuotaSendByMonth": 100,
+      "SMSQuotaSendByYear": 365,
+      "addressWeather": "REDACTED",
+      "backwashDuration": 0,
+      "batteryAlarm": false,
+      "batteryLow": false,
+      "batteryVoltage": null,
+      "canBeUsedAsMasterValve": false,
+      "cellularSignalQuality": 0,
+      "clockAlarm": false,
+      "createdAt": "2023-04-22T14:30:24.870Z",
+      "customPhoto": "REDACTED",
+      "defaultName": "REDACTED",
+      "displayType": "lr-mb-10",
+      "ecoModeIsEnabled": false,
+      "firmwareUpdateFrequency": "never",
+      "getBatteryLevel": 0,
+      "getDisplayType": "lr-mb-10",
+      "getPowerSourceTypeName": "AC 24V",
+      "getTimeBeforeDisconnected": 120,
+      "hardwareVersion": "D",
+      "hasPrograms": false,
+      "id": "000000000000000000000002",
+      "inputsUpdatedAt": "2023-04-22T13:50:14.684Z",
+      "isBattery": false,
+      "isBluetooth": true,
+      "isBluetoothOnly": false,
+      "isBoundToRelay": false,
+      "isClusterCompatible": false,
+      "isEcoModeCompatible": false,
+      "isFrostFreeEnabled": false,
+      "isHttpV2": true,
+      "isInAgriculturalModuleGroup": false,
+      "isInWateringModuleGroup": false,
+      "isInternetAccessibleThroughLongPolling": false,
+      "isOnline": true,
+      "isPowerSourceTypeRechargeable": false,
+      "isProgrammationTypeConfigurable": false,
+      "isTransferable": false,
+      "isV6BluetoothDevice": true,
+      "isWifi": false,
+      "latitude": 0,
+      "locationKey": null,
+      "longitude": 0,
+      "macAddress": "00:11:22:33:44:55",
+      "manufacturerType": "10",
+      "metadata": {
+        "isDistributionBoard": false,
+        "isEmecBoard": false,
+        "isPoolEdge": false
+      },
+      "moduleEcoModeCompatibility": {
+        "isFirmwareVersionCompatible": false,
+        "isTypeCompatible": false
+      },
+      "name": "LRMB10-AAAAAA",
+      "numberOfInputs": 0,
+      "offlineAlertSent": false,
+      "outputsUpdatedAt": "2023-04-22T13:50:14.684Z",
+      "owner": "REDACTED",
+      "phoneNumberLock": 0,
+      "photo": "REDACTED",
+      "platformEventOnSetData": false,
+      "powerSourceType": 3,
+      "powerState": 0,
+      "programmationType": 0,
+      "programmingUpdatedAt": null,
+      "relayEcoModeCompatibility": {
+        "isSoftwareVersionCompatible": true,
+        "isTypeCompatible": true,
+        "requiredMinVersion": "6.1.60"
+      },
+      "rssi": 3,
+      "secondaryPowerSourceType": 255,
+      "securityKey": 0,
+      "seenAt": "2026-11-21T16:03:45.097Z",
+      "sensorState": false,
+      "serialNumber": "100000AAAAAA0001",
+      "softwareVersion": "6.3.1",
+      "supportTags": [
+        "pool"
+      ],
+      "type": "lr-mb-10",
+      "typeHasSecondaryPowerIndicator": false,
+      "typeHasSlotProgrammation": false,
+      "typeIsAgricultural": false,
+      "typeIsAutomaticWaterBudgetCompatible": false,
+      "typeIsCellularRelay": false,
+      "typeIsCityLoraWan": false,
+      "typeIsDoor": false,
+      "typeIsElevator": false,
+      "typeIsEnergySensor": false,
+      "typeIsFilling": false,
+      "typeIsFloatSensor": false,
+      "typeIsGeotracking": false,
+      "typeIsJournalAvailable": false,
+      "typeIsLighting": false,
+      "typeIsLinkable": false,
+      "typeIsLoraChild": false,
+      "typeIsLoraWan": false,
+      "typeIsLoraWanV2": false,
+      "typeIsLrFl": false,
+      "typeIsLrIpEco": false,
+      "typeIsLrMsEco": false,
+      "typeIsLrag": false,
+      "typeIsLragEco": false,
+      "typeIsLrbst": false,
+      "typeIsLrms": false,
+      "typeIsLrmv": false,
+      "typeIsNetx": false,
+      "typeIsPeriodicModeAvailable": false,
+      "typeIsPoolAutomation": false,
+      "typeIsPoolProduct": false,
+      "typeIsPoolProductOnly": false,
+      "typeIsPressureAnalyzer": false,
+      "typeIsRelay": true,
+      "typeIsSensor": false,
+      "typeIsSkydome": false,
+      "typeIsSmartEnergyCapable": false,
+      "typeIsSmartIs": false,
+      "typeIsTurfWatering": false,
+      "typeIsVMC": false,
+      "typeIsWatering": false,
+      "typeIsWateringMastervalve": false,
+      "typeIsWateringToSlot": false,
+      "typeSupportsBlacklistedOutputs": false,
+      "updatedAt": "2026-10-25T17:16:02.875Z",
+      "usesBusConnectedSensors": false,
+      "usesMultiSensors": false,
+      "uuid": "REDACTED",
+      "wateringTypeAvailableInSupervision": false,
+      "wateringTypeAvailableInSupervisionWithoutJournal": false,
+      "weatherForecast": {
+        "0": {
+          "Date": "2026-01-16T07:00:00+01:00",
+          "Day": {
+            "Icon": 7,
+            "IconPhrase": "Nuageux",
+            "Rain": {
+              "Value": 0
+            }
+          },
+          "Night": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 1.9
+            }
+          },
+          "Temperature": {
+            "Maximum": {
+              "Value": 15.8
+            },
+            "Minimum": {
+              "Value": 4.7
+            }
+          },
+          "period": "today"
+        },
+        "1": {
+          "Date": "2026-01-17T07:00:00+01:00",
+          "Day": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 1.3
+            }
+          },
+          "Night": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 0.8
+            }
+          },
+          "Temperature": {
+            "Maximum": {
+              "Value": 10.7
+            },
+            "Minimum": {
+              "Value": 7
+            }
+          },
+          "period": "tomorrow"
+        },
+        "2": {
+          "Date": "2026-01-18T07:00:00+01:00",
+          "Day": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 2.5
+            }
+          },
+          "Night": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 1.6
+            }
+          },
+          "Temperature": {
+            "Maximum": {
+              "Value": 11.8
+            },
+            "Minimum": {
+              "Value": 7.5
+            }
+          },
+          "period": "dayAfterTomorrow"
+        },
+        "weatherForecastMissing": 1
+      },
+      "weatherForecastDisplay": false
+    },
+    {
+      "SMSQuotaSendByDay": 30,
+      "SMSQuotaSendByMonth": 100,
+      "SMSQuotaSendByYear": 365,
+      "addressWeather": "REDACTED",
+      "backwashDuration": 0,
+      "battery": 0,
+      "batteryAlarm": false,
+      "batteryLow": false,
+      "batteryVoltage": 0,
+      "canBeUsedAsMasterValve": false,
+      "cellularSignalQuality": 0,
+      "clockAlarm": false,
+      "createdAt": "2023-04-22T14:40:42.608Z",
+      "customPhoto": "REDACTED",
+      "defaultName": "REDACTED",
+      "displayType": "lr-pc",
+      "ecoModeIsEnabled": false,
+      "firmwareUpdateFrequency": "always",
+      "getBatteryLevel": 0,
+      "getDisplayType": "lr-pc",
+      "getPowerSourceTypeName": "AC 220V",
+      "getTimeBeforeDisconnected": 720,
+      "hardwareVersion": "B",
+      "hasPrograms": true,
+      "id": "000000000000000000000003",
+      "inputsUpdatedAt": "2023-04-22T14:40:46.811Z",
+      "isBattery": false,
+      "isBluetooth": true,
+      "isBluetoothOnly": false,
+      "isBoundToRelay": false,
+      "isClusterCompatible": false,
+      "isEcoModeCompatible": false,
+      "isFrostFreeEnabled": true,
+      "isHttpV2": true,
+      "isInAgriculturalModuleGroup": false,
+      "isInWateringModuleGroup": false,
+      "isInternetAccessibleThroughLongPolling": true,
+      "isOnline": false,
+      "isPowerSourceTypeRechargeable": false,
+      "isProgrammationTypeConfigurable": false,
+      "isTransferable": false,
+      "isV6BluetoothDevice": true,
+      "isWifi": false,
+      "lastRadioCommunication": "2026-11-21T14:44:34.000Z",
+      "lastSentProgramsSnapshot": {
+        "programs": [
+          {
+            "createdAt": "2023-04-22T14:40:42.769Z",
+            "cycle": 0,
+            "dataChanged": true,
+            "id": "000000000000000000000005",
+            "index": 0,
+            "mistingTimeOff": 30,
+            "mistingTimeOn": 5,
+            "module": "000000000000000000000003",
+            "name": "",
+            "numberOfDays": 2,
+            "periodicStartDate": "2023-04-22T22:00:00.000Z",
+            "programCharacteristics": {
+              "adaptOffset": -60,
+              "auxiliaryCyclicDuration": 0,
+              "auxiliarySpeed": null,
+              "defaultProgramSpeed": null,
+              "frostFreeSpeed": null,
+              "isRandom": false,
+              "isShutterDependant": false,
+              "isUsingButton": false,
+              "microFilteringDuration": 0,
+              "microFilteringPeriod": 0,
+              "microFilteringSpeed": null,
+              "microFilteringTemperature": 127,
+              "mode": 0,
+              "onSpeed": null,
+              "programType": 4,
+              "rule": 1,
+              "speedSequence": 4368
+            },
+            "programmingType": "temporal",
+            "realyUpdatedAt": "2026-11-21T13:19:26.692Z",
+            "sentAt": "2023-04-23T19:54:46.614Z",
+            "startTimes": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1
+            ],
+            "startTimesCycles": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stationsDuration": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "synchroDay": 0,
+            "temperatureHysteresis": null,
+            "temperatureSchedules": [
+              {
+                "days": 127,
+                "id": "000000000000000000000004",
+                "indexes": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  7,
+                  9,
+                  11,
+                  14,
+                  17,
+                  21
+                ],
+                "name": "Standard",
+                "thresholds": [
+                  [
+                    {
+                      "end": 360,
+                      "start": 300
+                    },
+                    {
+                      "end": 1380,
+                      "start": 1320
+                    }
+                  ],
+                  [
+                    {
+                      "end": 900,
+                      "start": 720
+                    }
+                  ],
+                  [
+                    {
+                      "end": 960,
+                      "start": 720
+                    }
+                  ],
+                  [
+                    {
+                      "end": 960,
+                      "start": 660
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1020,
+                      "start": 660
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1080,
+                      "start": 660
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1080,
+                      "start": 600
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1140,
+                      "start": 600
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1200,
+                      "start": 600
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1200,
+                      "start": 540
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1260,
+                      "start": 540
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1320,
+                      "start": 540
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1320,
+                      "start": 480
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1380,
+                      "start": 480
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 480
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 420
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 360
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 300
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 240
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 180
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 120
+                    }
+                  ],
+                  [
+                    {
+                      "end": 1440,
+                      "start": 60
+                    }
+                  ]
+                ]
+              }
+            ],
+            "temperatureThresholdActive": null,
+            "temperatureThresholdInactive": null,
+            "template": false,
+            "timeBetweenStations": 0,
+            "updatedAt": "2026-11-21T13:19:26.740Z",
+            "variableSpeedWindows": [],
+            "waterBudget": 100,
+            "weekDays": 127,
+            "windows": []
+          },
+          {
+            "createdAt": "2023-04-22T14:40:42.874Z",
+            "cycle": 0,
+            "dataChanged": true,
+            "id": "000000000000000000000006",
+            "index": 1,
+            "mistingTimeOff": 30,
+            "mistingTimeOn": 5,
+            "module": "000000000000000000000003",
+            "name": "",
+            "numberOfDays": 2,
+            "periodicStartDate": "2023-04-22T22:00:00.000Z",
+            "programCharacteristics": {
+              "auxiliaryCyclicDuration": 300,
+              "auxiliarySpeed": null,
+              "defaultProgramSpeed": null,
+              "frostFreeSpeed": null,
+              "isRandom": false,
+              "isShutterDependant": false,
+              "isUsingButton": false,
+              "microFilteringDuration": null,
+              "microFilteringPeriod": null,
+              "microFilteringSpeed": null,
+              "microFilteringTemperature": null,
+              "mode": 0,
+              "onSpeed": null,
+              "programType": 2,
+              "rule": 0,
+              "speedSequence": null
+            },
+            "programmingType": "temporal",
+            "realyUpdatedAt": "2026-11-21T08:38:26.976Z",
+            "sentAt": "2023-04-23T19:54:46.614Z",
+            "startTimes": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1
+            ],
+            "startTimesCycles": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stationsDuration": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "synchroDay": 0,
+            "temperatureHysteresis": null,
+            "temperatureSchedules": [],
+            "temperatureThresholdActive": null,
+            "temperatureThresholdInactive": null,
+            "template": false,
+            "timeBetweenStations": 0,
+            "updatedAt": "2026-11-21T13:19:26.793Z",
+            "variableSpeedWindows": [],
+            "waterBudget": 100,
+            "weekDays": 127,
+            "windows": []
+          },
+          {
+            "createdAt": "2023-04-22T14:40:42.904Z",
+            "cycle": 0,
+            "dataChanged": true,
+            "id": "000000000000000000000007",
+            "index": 2,
+            "mistingTimeOff": 30,
+            "mistingTimeOn": 5,
+            "module": "000000000000000000000003",
+            "name": "",
+            "numberOfDays": 2,
+            "periodicStartDate": "2023-04-22T22:00:00.000Z",
+            "programCharacteristics": {
+              "auxiliaryCyclicDuration": 300,
+              "auxiliarySpeed": null,
+              "defaultProgramSpeed": null,
+              "frostFreeSpeed": null,
+              "isRandom": false,
+              "isShutterDependant": false,
+              "isUsingButton": false,
+              "microFilteringDuration": null,
+              "microFilteringPeriod": null,
+              "microFilteringSpeed": null,
+              "microFilteringTemperature": null,
+              "mode": 0,
+              "onSpeed": null,
+              "programType": 2,
+              "rule": 0,
+              "speedSequence": null
+            },
+            "programmingType": "temporal",
+            "realyUpdatedAt": "2026-11-21T08:38:27.567Z",
+            "sentAt": "2023-04-23T19:54:46.614Z",
+            "startTimes": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1
+            ],
+            "startTimesCycles": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "stationsDuration": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "synchroDay": 0,
+            "temperatureHysteresis": null,
+            "temperatureSchedules": [],
+            "temperatureThresholdActive": null,
+            "temperatureThresholdInactive": null,
+            "template": false,
+            "timeBetweenStations": 0,
+            "updatedAt": "2026-11-21T13:19:26.842Z",
+            "variableSpeedWindows": [],
+            "waterBudget": 100,
+            "weekDays": 127,
+            "windows": []
+          }
+        ],
+        "snapshotAt": "2026-11-21T13:19:45.582Z",
+        "snapshotBy": "REDACTED"
+      },
+      "latitude": 0,
+      "locationKey": "REDACTED",
+      "longitude": 0,
+      "macAddress": "00:11:22:33:44:55",
+      "manufacturerType": "15",
+      "metadata": {
+        "isDistributionBoard": false,
+        "isEmecBoard": false,
+        "isLRPower": false,
+        "isPoolEdge": false,
+        "isPoolLevelSensor": false,
+        "isPoolPower": false,
+        "isVistapool": false,
+        "patches": [
+          {
+            "done": true,
+            "number": "202504231400",
+            "sendConfigurationStatus": "success",
+            "softwareVersionBeforePatch": "7.0.2",
+            "type": "forceModuleConfiguration"
+          },
+          {
+            "done": true,
+            "number": "202505021400",
+            "sendConfigurationStatus": "success",
+            "softwareVersionBeforePatch": "7.0.2",
+            "type": "forceModuleConfiguration"
+          }
+        ]
+      },
+      "moduleEcoModeCompatibility": {
+        "isFirmwareVersionCompatible": false,
+        "isTypeCompatible": false
+      },
+      "name": "LRPC-BBBBBB",
+      "numberOfInputs": 2,
+      "outputsUpdatedAt": "2023-04-22T12:52:34.096Z",
+      "owner": "REDACTED",
+      "phoneNumberLock": 0,
+      "photo": "REDACTED",
+      "platformEventOnSetData": false,
+      "powerMode": 255,
+      "powerSourceType": 10,
+      "powerState": 0,
+      "programmationType": 0,
+      "programmingSentAt": "2026-11-21T13:19:57.698Z",
+      "programmingUpdatedAt": "2026-11-21T13:19:45.654Z",
+      "realyUpdatedAt": "2023-04-22T14:40:51.445Z",
+      "relay": "000000000000000000000002",
+      "relayEcoModeCompatibility": {
+        "isFirmwareVersionCompatible": false,
+        "isTypeCompatible": false
+      },
+      "rssi": 0,
+      "secondaryBatteryVoltage": 80,
+      "secondaryPowerMode": 255,
+      "secondaryPowerSourceType": 255,
+      "secondaryPowerState": 0,
+      "securityKey": 0,
+      "sensorState": false,
+      "sentAt": "2026-11-21T13:19:57.610Z",
+      "serialNumber": "150302BBBBBB0001",
+      "softwareVersion": "7.0.9",
+      "status": {
+        "dialogTimeStamp": "2026-11-21T14:44:34.000Z",
+        "radio": [
+          "cfg",
+          "pgm",
+          "thr",
+          "cmn",
+          "id"
+        ],
+        "relayIsLongPolling": true
+      },
+      "statusReallyUpdatedAt": "2026-11-21T14:44:34.871Z",
+      "statusUpdatedAt": "2026-11-21T14:44:34.871Z",
+      "type": "lr-pc",
+      "typeHasSecondaryPowerIndicator": false,
+      "typeHasSlotProgrammation": false,
+      "typeIsAgricultural": false,
+      "typeIsAutomaticWaterBudgetCompatible": false,
+      "typeIsCellularRelay": false,
+      "typeIsCityLoraWan": false,
+      "typeIsDoor": false,
+      "typeIsElevator": false,
+      "typeIsEnergySensor": false,
+      "typeIsFilling": false,
+      "typeIsFloatSensor": false,
+      "typeIsGeotracking": false,
+      "typeIsJournalAvailable": false,
+      "typeIsLighting": false,
+      "typeIsLinkable": false,
+      "typeIsLoraChild": true,
+      "typeIsLoraWan": false,
+      "typeIsLoraWanV2": false,
+      "typeIsLrFl": false,
+      "typeIsLrIpEco": false,
+      "typeIsLrMsEco": false,
+      "typeIsLrag": false,
+      "typeIsLragEco": false,
+      "typeIsLrbst": false,
+      "typeIsLrms": false,
+      "typeIsLrmv": false,
+      "typeIsNetx": false,
+      "typeIsPeriodicModeAvailable": false,
+      "typeIsPoolAutomation": true,
+      "typeIsPoolProduct": true,
+      "typeIsPoolProductOnly": true,
+      "typeIsPressureAnalyzer": false,
+      "typeIsRelay": false,
+      "typeIsSensor": true,
+      "typeIsSkydome": false,
+      "typeIsSmartEnergyCapable": false,
+      "typeIsSmartIs": false,
+      "typeIsTurfWatering": false,
+      "typeIsVMC": false,
+      "typeIsWatering": false,
+      "typeIsWateringMastervalve": false,
+      "typeIsWateringToSlot": false,
+      "typeSupportsBlacklistedOutputs": false,
+      "updatedAt": "2026-11-21T14:44:34.915Z",
+      "usesBusConnectedSensors": false,
+      "usesMultiSensors": false,
+      "uuid": "REDACTED",
+      "waitingForStatusUpdate": false,
+      "wateringTypeAvailableInSupervision": false,
+      "wateringTypeAvailableInSupervisionWithoutJournal": false,
+      "weatherForecast": {
+        "0": {
+          "Date": "2026-11-20T07:00:00+01:00",
+          "Day": {
+            "Icon": 18,
+            "IconPhrase": "Pluie",
+            "Rain": {
+              "Value": 1
+            }
+          },
+          "Night": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 0.7
+            }
+          },
+          "Temperature": {
+            "Maximum": {
+              "Value": 17.8
+            },
+            "Minimum": {
+              "Value": 10
+            }
+          },
+          "period": "yesterday"
+        },
+        "1": {
+          "Date": "2026-11-21T07:00:00+01:00",
+          "Day": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 2.9
+            }
+          },
+          "Night": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 7.6
+            }
+          },
+          "Temperature": {
+            "Maximum": {
+              "Value": 16.8
+            },
+            "Minimum": {
+              "Value": 13.2
+            }
+          },
+          "period": "today"
+        },
+        "2": {
+          "Date": "2026-11-22T07:00:00+01:00",
+          "Day": {
+            "Icon": 14,
+            "IconPhrase": "Partiellement ensoleillé - averses",
+            "Rain": {
+              "Value": 7.6
+            }
+          },
+          "Night": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 7.6
+            }
+          },
+          "Temperature": {
+            "Maximum": {
+              "Value": 16
+            },
+            "Minimum": {
+              "Value": 10.7
+            }
+          },
+          "period": "tomorrow"
+        },
+        "3": {
+          "Date": "2026-11-23T07:00:00+01:00",
+          "Day": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 1.7
+            }
+          },
+          "Night": {
+            "Icon": 35,
+            "IconPhrase": "Partiellement nuageux",
+            "Rain": {
+              "Value": 0
+            }
+          },
+          "Temperature": {
+            "Maximum": {
+              "Value": 16.2
+            },
+            "Minimum": {
+              "Value": 6.7
+            }
+          },
+          "period": "dayAfterTomorrow"
+        }
+      },
+      "weatherForecastDisplay": false
+    },
+    {
+      "SMSQuotaSendByDay": 30,
+      "SMSQuotaSendByMonth": 100,
+      "SMSQuotaSendByYear": 365,
+      "address": "REDACTED",
+      "addressWeather": "REDACTED",
+      "backwashDuration": 0,
+      "batteryAlarm": false,
+      "batteryLow": false,
+      "batteryVoltage": null,
+      "canBeUsedAsMasterValve": false,
+      "cellularSignalQuality": 0,
+      "clockAlarm": false,
+      "country": "REDACTED",
+      "createdAt": "2026-06-21T08:46:58.197Z",
+      "customPhoto": "REDACTED",
+      "defaultName": "REDACTED",
+      "displayType": "ipx",
+      "ecoModeIsEnabled": false,
+      "firmwareUpdateFrequency": "always",
+      "getBatteryLevel": 0,
+      "getDisplayType": "ipx",
+      "getPowerSourceTypeName": "AC 220V",
+      "getTimeBeforeDisconnected": 720,
+      "hardwareVersion": "0",
+      "hasPrograms": false,
+      "id": "000000000000000000000010",
+      "inputsUpdatedAt": "2026-06-21T07:58:18.711Z",
+      "ipxData": {
+        "acknowledgedAlarms": "0000000000000000",
+        "cellVoltage": 159,
+        "configurationChanged": {
+          "00000000000000000000000d": "2026-06-21T08:48:41.120Z",
+          "00000000000000000000000e": "2026-06-21T08:48:41.120Z"
+        },
+        "configurationCode": "24211363",
+        "deviceState": {
+          "boostEnabled": false,
+          "canPhEntry": false,
+          "cellPolaruty": false,
+          "cmdEntry": false,
+          "flowEntry": false,
+          "pHInjection": false,
+          "prodStatus": false,
+          "shutterEntry": false,
+          "testProd": false
+        },
+        "model": 4,
+        "receiveEmailAlerts": {
+          "4": false,
+          "6": false
+        },
+        "receiveMobileAlerts": {
+          "4": false,
+          "6": false
+        },
+        "remainingTimeElectrolyseDurationInPercent": 0,
+        "serialNumber": "REDACTED",
+        "softCommandCard": "3.3",
+        "tagProtocolVersion": 6,
+        "totalElectrolyseDuration": 2379,
+        "totalElectrolyseDurationCurrent": {
+          "date": "2026-11-21T02:56:58.772Z",
+          "value": 2379
+        },
+        "totalElectrolyseDurationTheDayBefore": {
+          "date": "2026-11-20T04:29:53.826Z",
+          "value": 2371
+        }
+      },
+      "ipxRelay": "000000000000000000000003",
+      "isBattery": false,
+      "isBluetooth": false,
+      "isBluetoothOnly": false,
+      "isBoundToRelay": false,
+      "isClusterCompatible": false,
+      "isEcoModeCompatible": false,
+      "isFrostFreeEnabled": false,
+      "isHttpV2": false,
+      "isInAgriculturalModuleGroup": false,
+      "isInWateringModuleGroup": false,
+      "isInternetAccessibleThroughLongPolling": false,
+      "isOnline": false,
+      "isPowerSourceTypeRechargeable": false,
+      "isProgrammationTypeConfigurable": false,
+      "isTransferable": false,
+      "isV6BluetoothDevice": false,
+      "isWifi": false,
+      "lastIpxCommunication": "2026-11-21T02:55:50.000Z",
+      "latitude": 0,
+      "locationKey": null,
+      "longitude": 0,
+      "macAddress": "00:11:22:33:44:55",
+      "manufacturer": "00000000000000000000000f",
+      "manufacturerType": "FD",
+      "metadata": {
+        "brand": "Pool Technologie",
+        "isDistributionBoard": false,
+        "isEmecBoard": false,
+        "isFloodSensor": false,
+        "isLRPower": false,
+        "isPoolEdge": false,
+        "isPoolLevelSensor": false,
+        "isPoolPower": false,
+        "isVistapool": false
+      },
+      "moduleEcoModeCompatibility": {
+        "isFirmwareVersionCompatible": false,
+        "isTypeCompatible": false
+      },
+      "monthlyWaterBudgets": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "name": "IPX-CCCCCC",
+      "numberOfInputs": 2,
+      "outputsUpdatedAt": "2026-11-21T08:43:47.056Z",
+      "owner": "REDACTED",
+      "phoneNumberLock": 0,
+      "photo": "REDACTED",
+      "platformEventOnSetData": false,
+      "powerMode": 255,
+      "powerSourceType": 10,
+      "powerState": 0,
+      "programmationType": 0,
+      "programmingUpdatedAt": null,
+      "realyUpdatedAt": "2026-11-21T08:43:47.096Z",
+      "relayEcoModeCompatibility": {
+        "isFirmwareVersionCompatible": false,
+        "isTypeCompatible": false
+      },
+      "secondaryPowerSourceType": 255,
+      "securityKey": 0,
+      "sensorState": false,
+      "sentAt": "2026-11-21T08:43:46.916Z",
+      "serialNumber": "FD00010000000000CCCCCC0001",
+      "softwareVersion": "3.3",
+      "synchroQuotaSendByDay": 30,
+      "synchroQuotaSendByMonth": 100,
+      "synchroQuotaSendByYear": 365,
+      "type": "ipx",
+      "typeHasSecondaryPowerIndicator": false,
+      "typeHasSlotProgrammation": false,
+      "typeIpx": 1,
+      "typeIsAgricultural": false,
+      "typeIsAutomaticWaterBudgetCompatible": false,
+      "typeIsCellularRelay": false,
+      "typeIsCityLoraWan": false,
+      "typeIsDoor": false,
+      "typeIsElevator": false,
+      "typeIsEnergySensor": false,
+      "typeIsFilling": false,
+      "typeIsFloatSensor": false,
+      "typeIsGeotracking": false,
+      "typeIsJournalAvailable": false,
+      "typeIsLighting": false,
+      "typeIsLinkable": false,
+      "typeIsLoraChild": false,
+      "typeIsLoraWan": false,
+      "typeIsLoraWanV2": false,
+      "typeIsLrFl": false,
+      "typeIsLrIpEco": false,
+      "typeIsLrMsEco": false,
+      "typeIsLrag": false,
+      "typeIsLragEco": false,
+      "typeIsLrbst": false,
+      "typeIsLrms": false,
+      "typeIsLrmv": false,
+      "typeIsNetx": false,
+      "typeIsPeriodicModeAvailable": false,
+      "typeIsPoolAutomation": false,
+      "typeIsPoolProduct": true,
+      "typeIsPoolProductOnly": false,
+      "typeIsPressureAnalyzer": false,
+      "typeIsRelay": false,
+      "typeIsSensor": true,
+      "typeIsSkydome": false,
+      "typeIsSmartEnergyCapable": false,
+      "typeIsSmartIs": false,
+      "typeIsTurfWatering": false,
+      "typeIsVMC": false,
+      "typeIsWatering": false,
+      "typeIsWateringMastervalve": false,
+      "typeIsWateringToSlot": false,
+      "typeSupportsBlacklistedOutputs": false,
+      "updatedAt": "2026-11-21T08:43:49.957Z",
+      "usesBusConnectedSensors": false,
+      "usesMultiSensors": false,
+      "uuid": "REDACTED",
+      "wateringTypeAvailableInSupervision": false,
+      "wateringTypeAvailableInSupervisionWithoutJournal": false,
+      "weatherForecast": {
+        "0": {
+          "Date": "2026-11-20T07:00:00+01:00",
+          "Day": {
+            "Icon": 18,
+            "IconPhrase": "Pluie",
+            "Rain": {
+              "Value": 1
+            }
+          },
+          "Night": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 0.7
+            }
+          },
+          "Temperature": {
+            "Maximum": {
+              "Value": 17.8
+            },
+            "Minimum": {
+              "Value": 10
+            }
+          },
+          "period": "yesterday"
+        },
+        "1": {
+          "Date": "2026-11-21T07:00:00+01:00",
+          "Day": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 2.9
+            }
+          },
+          "Night": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 7.6
+            }
+          },
+          "Temperature": {
+            "Maximum": {
+              "Value": 16.8
+            },
+            "Minimum": {
+              "Value": 13.2
+            }
+          },
+          "period": "today"
+        },
+        "2": {
+          "Date": "2026-11-22T07:00:00+01:00",
+          "Day": {
+            "Icon": 14,
+            "IconPhrase": "Partiellement ensoleillé - averses",
+            "Rain": {
+              "Value": 7.6
+            }
+          },
+          "Night": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 7.6
+            }
+          },
+          "Temperature": {
+            "Maximum": {
+              "Value": 16
+            },
+            "Minimum": {
+              "Value": 10.7
+            }
+          },
+          "period": "tomorrow"
+        },
+        "3": {
+          "Date": "2026-11-23T07:00:00+01:00",
+          "Day": {
+            "Icon": 12,
+            "IconPhrase": "Averses",
+            "Rain": {
+              "Value": 1.7
+            }
+          },
+          "Night": {
+            "Icon": 35,
+            "IconPhrase": "Partiellement nuageux",
+            "Rain": {
+              "Value": 0
+            }
+          },
+          "Temperature": {
+            "Maximum": {
+              "Value": 16.2
+            },
+            "Minimum": {
+              "Value": 6.7
+            }
+          },
+          "period": "dayAfterTomorrow"
+        }
+      },
+      "weatherForecastDisplay": false
+    }
+  ],
+  "notifications": {
+    "000000000000000000000013-backwashReminder": {
+      "action": "backwashReminder",
+      "date": "2026-11-07T10:00:00+01:00",
+      "poolIdentifier": "000000000000000000000013"
+    }
+  },
+  "owner": "REDACTED",
+  "pHRegulationType": "undefined",
+  "ph": {
+    "date": "2026-11-21T02:55:50.000Z",
+    "value": 1.6
+  },
+  "phRegulationMode": "automatic",
+  "powerConsumption": {
+    "date": null,
+    "value": null
+  },
+  "powerProduction": {
+    "date": null,
+    "value": null
+  },
+  "preventWaterChemistryCorrectionProtocolTriggering": "2023-04-22T16:16:33.877Z",
+  "pumpDebit": null,
+  "pumpModel": "undefined",
+  "shape": "rectangular",
+  "status": {
+    "lastPhMeasure": {
+      "date": 1795229750,
+      "value": 1.6
+    },
+    "lastTemperatureMeasure": {
+      "date": 1795276860,
+      "value": 17.57
+    },
+    "overtakingThreshold": "1",
+    "poolWithoutModules": false,
+    "state": true
+  },
+  "temperature": {
+    "date": "2026-11-21T16:01:00.000Z",
+    "value": 17.57
+  },
+  "updatedAt": "2026-11-21T16:02:48.049Z",
+  "volume": 32,
+  "waterFillingState": 1,
+  "waterTreatmentType": "electrolysis",
+  "width": 3.5,
+  "xRef": 0
+}
