@@ -1,8 +1,8 @@
 """The MyIndygo (Solem) integration (unofficial).
 
 Set-up logs in to the MyIndygo cloud, starts the two data coordinators and registers one Home
-Assistant device per module of the account (gateway, pool controller, IPX). Entities are added in
-the next steps of the roadmap (see the GitHub issues).
+Assistant device per module of the account (gateway, pool controller, IPX). The outputs of a pool
+controller accept manual commands (forced run, boost, pause, stop) as entity actions.
 """
 
 from __future__ import annotations
@@ -12,14 +12,19 @@ from dataclasses import dataclass
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_EMAIL, CONF_PASSWORD, Platform
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
+from homeassistant.helpers.typing import ConfigType
 
 from .api import MyIndygoApiClient
+from .commands import async_setup_services
 from .const import CONF_CLIENT_ID, DOMAIN, MANUFACTURER, MODEL_NAMES
 from .coordinator import MyIndygoCloudCoordinator, MyIndygoLiveCoordinator
 
 PLATFORMS: list[Platform] = [Platform.BINARY_SENSOR, Platform.SENSOR]
+
+CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 
 
 @dataclass
@@ -32,6 +37,12 @@ class MyIndygoData:
 
 
 type MyIndygoConfigEntry = ConfigEntry[MyIndygoData]
+
+
+async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
+    """Register the entity actions (manual commands of the controller outputs)."""
+    async_setup_services(hass)
+    return True
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: MyIndygoConfigEntry) -> bool:

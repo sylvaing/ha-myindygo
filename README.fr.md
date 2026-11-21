@@ -10,9 +10,9 @@
 Intégration personnalisée Home Assistant pour les équipements de piscine **Solem MyIndygo**, qui utilise la
 même API cloud que l'application mobile MyIndygo.
 
-**La version 0.1.0 est en lecture seule** : elle affiche vos équipements dans Home Assistant, elle ne les
-pilote pas. Les commandes (marche forcée, programmes, consignes de l'électrolyseur) sont prévues pour la
-0.2.0, voir la [feuille de route](https://github.com/sylvaing/ha-myindygo/milestones).
+La version 0.1.0 est en lecture seule. La prochaine version ajoute les commandes manuelles des sorties du
+coffret (marche forcée, boost, pause, arrêt, voir [Actions](#actions)) ; les programmes et les consignes
+de l'électrolyseur sont sur la [feuille de route](https://github.com/sylvaing/ha-myindygo/milestones).
 
 ## Prérequis
 
@@ -97,6 +97,39 @@ l'entité **Dernière remontée** indique l'âge de ses valeurs.
 
 Connexion au cloud ; diagnostics : liaison Wi-Fi, dernier redémarrage, code de réinitialisation (désactivé
 par défaut).
+
+## Actions
+
+Les sorties du coffret acceptent les mêmes commandes manuelles que l'application MyIndygo. Chaque action
+cible le capteur binaire de marche d'une sortie (**Filtration**, **Sortie 1**, **Sortie 2**), ou
+l'appareil coffret pour atteindre toutes ses sorties :
+
+| Action | Paramètre | Effet |
+|---|---|---|
+| `myindygo.start_manual_run` | durée (1 min – 24 h) | met la sortie en marche, puis la rend à son programme |
+| `myindygo.start_boost` | durée (1 min – 24 h) | boost de la sortie filtration ou traitement |
+| `myindygo.pause` | jours (1 – 30) | arrête la sortie, programme compris |
+| `myindygo.stop_manual_command` | — | termine la marche forcée, le boost ou la pause |
+
+```yaml
+action: myindygo.start_manual_run
+target:
+  entity_id: binary_sensor.lrpc_xxxxxx_filtration
+data:
+  duration: "01:30:00"
+```
+
+À savoir :
+
+- Le coffret **ignore sans erreur** une commande manuelle sur une sortie qui n'est pas en mode **Auto**
+  (voir le capteur *mode*). L'intégration refuse alors l'action avec une erreur plutôt que de faire
+  semblant ; changez d'abord le mode dans l'application MyIndygo. Le boost n'est proposé que pour les
+  sorties filtration et traitement, comme dans l'application.
+- Le cloud répond avant l'échange radio avec le coffret (**Commande radio en attente** est alors
+  allumé). L'intégration relit l'état 10 secondes plus tard et journalise un avertissement si la
+  commande n'a eu aucun effet visible.
+- Une sortie auxiliaire réglée pour forcer la filtration est commandée seule (l'application prolonge
+  aussi la filtration dans ce cas) ; les pompes à vitesse variable ne sont pas prises en charge.
 
 ## Fonctionnement
 
