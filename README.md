@@ -70,7 +70,8 @@ Please keep the intervals conservative: the MyIndygo cloud is not designed for f
 | Filtration, Output 1, Output 2 | running |
 | Filtration / output state | off, program, manual run, boost, frost protection, paused |
 | Filtration / output remaining time | minutes |
-| Filtration / output mode | off, on, auto |
+| Filtration / output mode | off, on, auto; also as a select to change it (see [Programs](#programs)) |
+| Filtration daily adjustment | Standard −4 h … +4 h, select (see [Programs](#programs)) |
 | Temperature band | band used by the thermo-adaptive schedule, e.g. `18-20 °C` |
 | Filtration planned today | hours, decoded from the controller's schedule |
 | Diagnostics | last communication, radio command pending, input alert, output rule and type, controller temperature (disabled by default) |
@@ -120,13 +121,38 @@ Good to know:
 
 - The controller **silently ignores** a manual command on an output whose mode is not **Auto** (check
   the *mode* sensor). The integration refuses the action with an error instead of pretending it
-  worked; change the mode in the MyIndygo app first. Boost is only offered for the filtration and
+  worked; change the mode first (*mode* select). Boost is only offered for the filtration and
   treatment outputs, like in the app.
 - The cloud answers before the radio exchange with the controller (**Radio command pending** is on
   meanwhile). The integration reads the status again 10 seconds later and logs a warning if the
   command had no visible effect.
 - An auxiliary output configured to force the filtration is commanded alone (the app also extends
   the filtration in that case); variable speed pumps are not supported.
+
+## Programs
+
+Two settings of the output programs can be changed, like in the MyIndygo app:
+
+| Entity | Options | Effect |
+|---|---|---|
+| Filtration mode, Output 1 mode, Output 2 mode (select) | off, on, auto | off: always off; on: always on; auto: follows its schedule |
+| Filtration daily adjustment (select, configuration) | Standard −4 h … Standard +4 h | shifts the running time of the thermo-adaptive filtration, hour by hour |
+
+Good to know:
+
+- A change is written like the app does: the programs stored by MyIndygo first, then the programs of
+  the controller (all outputs at once, through the gateway), then the platform is told that the
+  controller is up to date. The programs are read again just before, and every setting that is not
+  changed is sent back as it was.
+- If the controller cannot be reached, the change stays saved on the MyIndygo platform only: the
+  select keeps showing what the controller really runs, and the MyIndygo app shows the change as not
+  transmitted (its send button retries).
+- The daily adjustment is only available for a filtration program with the temperature rule. The
+  integration computes the controller's schedule like the app; as a safety net, it refuses the change
+  if the schedule it computes from the current settings differs from the one read from the controller.
+- The programs are read again 30 seconds after a change; a warning is logged if the controller does
+  not show it yet.
+- Time slots, durations per temperature band and variable speed settings are not editable yet.
 
 ## How it works
 
