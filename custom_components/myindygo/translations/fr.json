@@ -87,6 +87,36 @@
           "off": "Arrêt",
           "percentage": "Pourcentage"
         }
+      },
+      "filtration_mode": {
+        "name": "Mode filtration",
+        "state": {
+          "off": "Arrêt",
+          "on": "Marche",
+          "auto": "Auto"
+        }
+      },
+      "output_mode": {
+        "name": "Mode sortie {number}",
+        "state": {
+          "off": "Arrêt",
+          "on": "Marche",
+          "auto": "Auto"
+        }
+      },
+      "filtration_daily_adjustment": {
+        "name": "Ajustement quotidien de la filtration",
+        "state": {
+          "minus_4": "Standard −4 h",
+          "minus_3": "Standard −3 h",
+          "minus_2": "Standard −2 h",
+          "minus_1": "Standard −1 h",
+          "standard": "Standard",
+          "plus_1": "Standard +1 h",
+          "plus_2": "Standard +2 h",
+          "plus_3": "Standard +3 h",
+          "plus_4": "Standard +4 h"
+        }
       }
     },
     "sensor": {
@@ -356,7 +386,7 @@
       "message": "Le réglage n'a pas pu être envoyé à l'électrolyseur : {error}"
     },
     "output_not_auto": {
-      "message": "Cette sortie est en mode {mode} : le coffret n'accepte les commandes manuelles que sur une sortie en mode Auto. Changez d'abord son mode dans l'app MyIndygo."
+      "message": "Cette sortie est en mode {mode} : le coffret n'accepte les commandes manuelles que sur une sortie en mode Auto. Changez d'abord son mode (sélecteur de mode)."
     },
     "boost_not_supported": {
       "message": "Le boost n'est disponible que pour les sorties filtration et traitement."
@@ -372,6 +402,24 @@
     },
     "command_failed": {
       "message": "La commande n'a pas pu être envoyée au coffret piscine : {error}"
+    },
+    "program_read_failed": {
+      "message": "Les programmes du coffret piscine n'ont pas pu être lus : {error}. Rien n'a été modifié."
+    },
+    "program_copies_differ": {
+      "message": "Les programmes enregistrés par MyIndygo et ceux du coffret piscine ne correspondent pas ({error}). Rien n'a été modifié ; ouvrez d'abord l'app MyIndygo pour transmettre les programmes au coffret."
+    },
+    "daily_adjustment_not_supported": {
+      "message": "L'ajustement quotidien ne s'applique qu'à un programme de filtration avec la règle température."
+    },
+    "program_sched_mismatch": {
+      "message": "Le planning calculé à partir des programmes MyIndygo diffère de celui du coffret piscine : l'ajustement quotidien n'est pas modifié. Ouvrez d'abord l'app MyIndygo pour transmettre les programmes au coffret."
+    },
+    "program_save_failed": {
+      "message": "Les programmes n'ont pas pu être enregistrés sur la plateforme MyIndygo : {error}. Rien n'a été modifié."
+    },
+    "program_send_failed": {
+      "message": "Les programmes ont été enregistrés sur la plateforme MyIndygo mais n'ont pas pu être envoyés au coffret piscine : {error}. Le coffret garde ses programmes précédents ; l'app MyIndygo indique la modification comme non transmise."
     }
   }
 }
