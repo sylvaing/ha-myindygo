@@ -135,5 +135,5 @@ async def test_no_entity_unavailable(
 ) -> None:
     await _setup(hass, mock_client, mock_config_entry, scenario)
     all_states = {**states(hass, CONTROLLER), **states(hass, IPX), **states(hass, GATEWAY)}
-    assert len(all_states) == 42
+    assert len(all_states) == 50
     assert [key for key, value in all_states.items() if value == "unavailable"] == []

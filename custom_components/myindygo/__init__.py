@@ -2,7 +2,8 @@
 
 Set-up logs in to the MyIndygo cloud, starts the two data coordinators and registers one Home
 Assistant device per module of the account (gateway, pool controller, IPX). The outputs of a pool
-controller accept manual commands (forced run, boost, pause, stop) as entity actions.
+controller accept manual commands (forced run, boost, pause, stop) as entity actions; the settings
+of an electrolyser are number, select and button entities.
 """
 
 from __future__ import annotations
@@ -22,7 +23,13 @@ from .commands import async_setup_services
 from .const import CONF_CLIENT_ID, DOMAIN, MANUFACTURER, MODEL_NAMES
 from .coordinator import MyIndygoCloudCoordinator, MyIndygoLiveCoordinator
 
-PLATFORMS: list[Platform] = [Platform.BINARY_SENSOR, Platform.SENSOR]
+PLATFORMS: list[Platform] = [
+    Platform.BINARY_SENSOR,
+    Platform.BUTTON,
+    Platform.NUMBER,
+    Platform.SELECT,
+    Platform.SENSOR,
+]
 
 CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 

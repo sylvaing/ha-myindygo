@@ -54,6 +54,41 @@
     }
   },
   "entity": {
+    "button": {
+      "boost_12h": {
+        "name": "Boost 12 h"
+      },
+      "boost_24h": {
+        "name": "Boost 24 h"
+      },
+      "boost_stop": {
+        "name": "Arrêter le boost"
+      }
+    },
+    "number": {
+      "ph_setpoint": {
+        "name": "Consigne pH"
+      },
+      "production_setpoint": {
+        "name": "Consigne de production"
+      }
+    },
+    "select": {
+      "ph_regulation": {
+        "name": "Régulation pH",
+        "state": {
+          "off": "Arrêt",
+          "on": "Marche"
+        }
+      },
+      "electrolysis_mode": {
+        "name": "Mode d'électrolyse",
+        "state": {
+          "off": "Arrêt",
+          "percentage": "Pourcentage"
+        }
+      }
+    },
     "sensor": {
       "water_temperature": {
         "name": "Température de l'eau"
@@ -233,6 +268,9 @@
       "alarm": {
         "name": "Alarme"
       },
+      "settings_pending": {
+        "name": "Réglages en attente"
+      },
       "boost": {
         "name": "Boost"
       },
@@ -293,6 +331,30 @@
     }
   },
   "exceptions": {
+    "filtration_stopped": {
+      "message": "La filtration est arrêtée : l'électrolyseur ne prend de nouveaux réglages que filtration en marche. Démarrez d'abord la filtration."
+    },
+    "filtration_unknown": {
+      "message": "L'état de la filtration est inconnu (coffret piscine injoignable) : le réglage n'a pas été envoyé, car l'électrolyseur ne prend de nouveaux réglages que filtration en marche."
+    },
+    "ph_regulation_off": {
+      "message": "La consigne pH ne peut être modifiée que si la régulation pH est en marche."
+    },
+    "production_not_percentage": {
+      "message": "La consigne de production ne peut être modifiée qu'en mode d'électrolyse Pourcentage."
+    },
+    "boost_wintering": {
+      "message": "L'électrolyseur est en hivernage : le boost n'est pas disponible."
+    },
+    "invalid_setting": {
+      "message": "{value} n'est pas une valeur acceptée pour ce réglage."
+    },
+    "no_ipx_output": {
+      "message": "Cette sortie de l'électrolyseur est inconnue du cloud MyIndygo."
+    },
+    "setting_failed": {
+      "message": "Le réglage n'a pas pu être envoyé à l'électrolyseur : {error}"
+    },
     "output_not_auto": {
       "message": "Cette sortie est en mode {mode} : le coffret n'accepte les commandes manuelles que sur une sortie en mode Auto. Changez d'abord son mode dans l'app MyIndygo."
     },

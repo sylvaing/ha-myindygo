@@ -3,6 +3,13 @@
 ## Unreleased
 
 ### Added
+- Electrolyser settings (IPX PoolTech, #17): pH setpoint (6.8–7.6) and production setpoint
+  (0–100 %) as numbers, pH regulation and electrolysis mode as selects, boost 12 h / 24 h / stop as
+  buttons. A setting stays pending in the cloud until the electrolyser picks it up (~10–15 min,
+  filtration running): the entities keep the reported value, the request is in their
+  `pending_value` attribute and in the new **Settings pending** binary sensor, and a warning is
+  logged when it is not applied. The app's rules are enforced (filtration running, pH regulation on,
+  percentage mode, no boost while wintering). **Not yet tested on a real electrolyser.**
 - Integration icon (original artwork, a generic pool symbol) shipped in the integration's `brand/`
   folder, shown by Home Assistant (2026.3 and later) and HACS.
 - Manual commands of the pool controller outputs, as entity actions on the output binary sensors

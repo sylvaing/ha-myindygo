@@ -11,8 +11,9 @@ Intégration personnalisée Home Assistant pour les équipements de piscine **So
 même API cloud que l'application mobile MyIndygo.
 
 La version 0.1.0 est en lecture seule. La prochaine version ajoute les commandes manuelles des sorties du
-coffret (marche forcée, boost, pause, arrêt, voir [Actions](#actions)) ; les programmes et les consignes
-de l'électrolyseur sont sur la [feuille de route](https://github.com/sylvaing/ha-myindygo/milestones).
+coffret (marche forcée, boost, pause, arrêt, voir [Actions](#actions)) et les réglages de l'électrolyseur
+(voir [Réglages de l'électrolyseur](#réglages-de-lélectrolyseur)) ; les programmes sont sur la
+[feuille de route](https://github.com/sylvaing/ha-myindygo/milestones).
 
 ## Prérequis
 
@@ -92,6 +93,32 @@ Gardez des intervalles prudents : le cloud MyIndygo n'est pas prévu pour des in
 
 L'électrolyseur ne remonte ses données que pendant la filtration, environ toutes les 10 à 15 minutes :
 l'entité **Dernière remontée** indique l'âge de ses valeurs.
+
+### Réglages de l'électrolyseur
+
+> **Pas encore testés sur un vrai électrolyseur** (la seule installation de test est en hivernage). Les
+> clés, plages et règles viennent de l'app MyIndygo. Les retours sont bienvenus.
+
+| Entité | Type | Valeurs |
+|---|---|---|
+| Consigne pH | nombre | 6,8 – 7,6, pas de 0,1 ; seulement si la régulation pH est en marche |
+| Régulation pH | sélection | arrêt / marche |
+| Consigne de production | nombre | 0 – 100 %, pas de 1 (pas de 5 sur certains modèles, comme dans l'app) ; seulement en mode pourcentage |
+| Mode d'électrolyse | sélection | arrêt / pourcentage (le mode auto demande une sonde redox ou chlore et n'est pas proposé) |
+| Boost 12 h, Boost 24 h, Arrêter le boost | bouton | |
+| Réglages en attente | capteur binaire | allumé tant qu'un réglage attend l'électrolyseur ; les demandes sont dans l'attribut `pending` |
+
+Un nouveau réglage **n'est pas appliqué tout de suite** : le cloud MyIndygo le garde *en attente* et le
+transmet au prochain échange avec l'électrolyseur, environ 10 à 15 minutes plus tard, et seulement pendant
+la filtration. D'ici là, les entités continuent d'afficher la valeur remontée par l'électrolyseur ; la
+valeur demandée est dans leur attribut `pending_value` et dans **Réglages en attente**. Quand
+l'électrolyseur remonte à nouveau, l'intégration journalise un avertissement si le réglage n'a pas été
+appliqué, ou s'il est toujours en attente au bout de 30 minutes.
+
+Comme dans l'app, un changement est refusé filtration arrêtée (ou d'état inconnu), et le boost est refusé
+pendant l'hivernage de l'électrolyseur. Le boost est proposé sous forme de boutons plutôt que d'une
+sélection : l'électrolyseur indique si un boost est en cours et son temps restant (**Boost**, **Temps de
+boost restant**), pas la durée demandée.
 
 ### Passerelle (LR-MB-10)
 
