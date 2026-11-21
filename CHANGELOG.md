@@ -3,6 +3,8 @@
 ## Unreleased
 
 ### Added
+- Integration icon (original artwork, a generic pool symbol) shipped in the integration's `brand/`
+  folder, shown by Home Assistant (2026.3 and later) and HACS.
 - Manual commands of the pool controller outputs, as entity actions on the output binary sensors
   (or the controller device): `myindygo.start_manual_run` (duration), `myindygo.start_boost`
   (duration, filtration and treatment outputs), `myindygo.pause` (days) and

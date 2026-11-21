@@ -2,6 +2,8 @@
 
 > **Projet non officiel.** Ni affilié à Solem, ni approuvé ou supporté par Solem.
 > « MyIndygo » et « Solem » sont des marques de leurs propriétaires respectifs.
+> L'icône de l'intégration est une création originale (un symbole de piscine générique), pas un logo
+> Solem ou MyIndygo.
 
 🇬🇧 [English version](README.md)
 
